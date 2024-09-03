@@ -16,7 +16,7 @@ export default function CreatePodcastLayout({
         <section className="flex flex-1 flex-col  px-4 sm:px-14 min-h-screen">
           <div className="flex flex-col w-full max-w-5xl max-sm:px-4 mx-auto">
             <div>
-              <Toaster />
+              {/* <Toaster /> */}
               {children}
             </div>
           </div>
