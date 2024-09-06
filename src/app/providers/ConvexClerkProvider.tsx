@@ -19,16 +19,16 @@ const ConvexClerkProvider = ({ children }: { children: ReactNode }) => (
       variables: {
         colorBackground: "#1b1b1b",
         colorNeutral: "#DCCA87",
-
         colorPrimary: "#DCCA87",
         colorText: "#fff",
         colorInputBackground: "#1b1f29",
         colorInputText: "#fff",
       },
     }}
+    afterSignOutUrl="/sign-in"
   >
     <ConvexProviderWithClerk client={convex} useAuth={useAuth}>
-      <SignedIn>{children}</SignedIn>
+      {children}
     </ConvexProviderWithClerk>
   </ClerkProvider>
 );

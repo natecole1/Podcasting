@@ -1,24 +1,11 @@
-import { Toaster } from "@/components/ui/toaster";
-import LeftSideBar from "@/src/components/ui/LeftSideBar";
+import React from "react";
 
-import Image from "next/image";
-
-export default function CreatePodcastLayout({
+const Rootlayout = ({
   children,
 }: Readonly<{
   children: React.ReactNode;
-}>) {
-  return (
-    <div className="flex flex-col relative">
-      <main className="flex bg-black-3 relative">
-        <LeftSideBar />
+}>) => {
+  return <div>{children}</div>;
+};
 
-        <section className="flex flex-1 flex-col  px-4 sm:px-14 min-h-screen">
-          <div className="flex flex-col w-full max-w-5xl max-sm:px-4 mx-auto">
-            <div>{children}</div>
-          </div>
-        </section>
-      </main>
-    </div>
-  );
-}
+export default Rootlayout;
