@@ -26,11 +26,11 @@ import { Input } from "@/src/components/ui/input";
 import { Button } from "@/src/components/ui/button";
 import { Label } from "@/src/components/ui/label";
 import { cn } from "@/src/lib/utils";
-import { voiceCategories } from "@/src/constants";
+
 import { useState } from "react";
 import { Textarea } from "@/components/ui/textarea";
 import GeneratePodcast from "@/src/components/ui/GeneratePodcast";
-import GenerateThumbnail from "@/src/components/ui/GenerateThumbnail";
+
 import { Loader } from "lucide-react";
 import { Id } from "@/convex/_generated/dataModel";
 

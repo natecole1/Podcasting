@@ -76,9 +76,7 @@
   .left_sidebar {
     @apply flex flex-col w-fit justify-between sticky left-0 top-0 border-none bg-black-1 text-white-1 pt-6 max-md:hidden lg:w-[250px] lg:pl-6;
   }
-  .right_sidebar {
-    @apply flex flex-col w-[310px] sticky right-0 top-0 overflow-y-hidden border-none bg-black-1 max-xl:hidden pt-6 px-[30px];
-  }
+
   .podcast_grid {
     @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-8;
   }
@@ -112,9 +110,7 @@
   .input_class {
     @apply border-none mt-5;
   }
-  .generate_thumbnail {
-    @apply flex flex-col justify-between border-none mt-[40px] w-full gap-2;
-  }
+
   .image_div {
     @apply flex-col flex-center mt-5 w-full h-[142px] flex-none cursor-pointer rounded-xl border-dashed border-black-6 bg-black-1;
   }

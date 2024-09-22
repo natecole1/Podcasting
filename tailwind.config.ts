@@ -45,6 +45,7 @@ const config = {
       backgroundImage: {
         "nav-focus":
           "linear-gradient(270deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.00) 100%)",
+
         nav_hero_bg_image: "url('/assets/podcastPicThree.svg')",
       },
 

@@ -1,5 +1,3 @@
-// https://sensible-bug-90.clerk.accounts.dev
-
 const authConfig = {
   providers: [
     {
