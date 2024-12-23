@@ -5,6 +5,16 @@ export const sidebarLinks = [
     imgURL: "/assets/home.svg",
   },
   {
+    label: "Browse",
+    route: "/browse",
+    imgURL: "/assets/browse.png",
+  },
+  {
+    label: "Library",
+    route: "/library",
+    imgURL: "/assets/headphone.png",
+  },
+  {
     label: "Create Podcast",
     route: "/create-podcast",
     imgURL: "/assets/microphone.svg",

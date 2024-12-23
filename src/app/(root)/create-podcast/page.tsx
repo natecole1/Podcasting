@@ -29,7 +29,7 @@ import { cn } from "@/src/lib/utils";
 
 import { useState } from "react";
 import { Textarea } from "@/components/ui/textarea";
-import GeneratePodcast from "@/src/components/ui/GeneratePodcast";
+
 
 import { Loader } from "lucide-react";
 import { Id } from "@/convex/_generated/dataModel";
