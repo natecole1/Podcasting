@@ -4,8 +4,8 @@ import Image from "next/image";
 
 const CreateSection = () => {
   return (
-    <div className="flex flex-col md:flex-row items-center justify-between bg-black-1 pl-6 pr-6 md:pl-5 md:pr-5 pt-[60px] pb-[60px]">
-      <div className="flex flex-col justify-start w-full mr-10 pr-10 pl-10">
+    <div className="flex w-full items-center bg-black-1 p-6">
+      <div className="flex flex-col justify-start w-full sm:w-[50%] px-4">
         <p className="text-white-4">Chase the dream</p>
         <div className="w-10 h-2 mt-2 bg-gold-1" />
         <h1 className="text-gold-1 text-3xl mt-8">
@@ -21,13 +21,13 @@ const CreateSection = () => {
           </Button>
         </Link>
       </div>
-      <div className="w-full mt-4 lg:w-3/5">
+      <div className="w-[50%] p-8 hidden sm:flex">
         <Image
           src="/assets/podcastPicTwo.svg"
           alt="man podcasting"
-          width="0"
-          height="0"
-          style={{ width: "100%", height: "auto" }}
+          width={100}
+          height={100}
+          className="w-full rounded-xl"
         />
       </div>
     </div>

@@ -1,3 +1,4 @@
+
 import Image from "next/image";
 import React from "react";
 
@@ -7,26 +8,26 @@ const PodcastCard = ({
   imgURL,
   podcastId,
 }: {
-  description: string;
-  title: string;
-  imgURL: string;
-  podcastId: number;
+  description?: string;
+  title?: string;
+  imgURL?: string;
+  podcastId?: string;
 }) => {
   return (
-    <div className="cursor-pointer">
-      <figure className="flex flex-col gap-2 pb-2">
+    <div className="cursor-pointer w-[150px] lg:w-[200px] h-[220px] lg:h-[300px] rounded-lg mt-5">
+      <div className="flex flex-col w-full gap-2 pb-2 ">
         <Image
           src={imgURL}
-          alt={title}
-          width={170}
-          height={180}
-          className="aspect-square h-fit w-full rounded-[8px]"
+          alt='podcast Image'
+          unoptimized
+          width={0}
+          height={0}
+          className="aspect-square object-fit w-full h-1/2 rounded-lg"
         />
-      </figure>
-      <div className="flex flex-col">
-        <h1 className="font-bold text-gold-1 text-18 truncate">{title}</h1>
-        <p className="font-normal text-white-2 truncate">{description}</p>
       </div>
+      {/* <div className="flex justify-center text-center">
+        <h1 className="font-bold text-white-2 hover:text-white-1 transition-colors duration-300 text-14 md:text-16 mt-1">{title}</h1>
+      </div> */}
     </div>
   );
 };

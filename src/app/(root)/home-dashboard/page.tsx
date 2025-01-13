@@ -1,14 +1,18 @@
 'use client'
 import React from "react";
-import { apiSlice, useGetTopPodcastsByCountryQuery } from "@/src/lib/features/api/apiSlice";
-import { TaddyArgType } from "@/src/types";
+
+import Searchbar from "@/src/components/ui/Searchbar";
+import HomePagePodcastGallery from "@/src/components/ui/HomePagePodcastGallery";
+
 
 const page = () => {
-  const { data } = useGetTopPodcastsByCountryQuery();
-  console.log(data);
-
-
-  return <div>page</div>;
+   
+  return(
+    <div className="flex flex-col justify-center items-center">
+      <Searchbar />
+      <HomePagePodcastGallery />
+    </div>
+  );
 };
 
 export default page;

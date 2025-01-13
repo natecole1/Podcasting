@@ -5,11 +5,16 @@ import DiscoverSection from "@/src/components/ui/DiscoverSection";
 import Footer from "@/src/components/ui/Footer";
 import Hero from "@/src/components/ui/Hero";
 import Navbar from "@/src/components/ui/Navbar";
+import VideoBackground from "@/src/components/ui/VideoBackground";
+
+
+
 
 const Home = () => {
   return (
     <>
-      <div className="bg-nav_hero_bg_image bg-no-repeat bg-cover bg-fixed bg-center">
+      <div className="relative">
+        <VideoBackground />
         <Navbar />
         <Hero />
       </div>

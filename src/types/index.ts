@@ -22,7 +22,7 @@ export type PodcastQueryType = {
       uuid: number
       name: string
     }
-  }
+  },
 }
 
 export type TaddyArgType = {
@@ -287,3 +287,77 @@ country: {
   ZIMBABWE: string
 }
 }
+
+export type TopPodcastsDetailType = {
+  getMultiplePodcastSeries: [
+    {
+      uuid: string;
+      name: string;
+      itunesId: number;
+      description: string;
+      imageUrl: string;
+      itunesInfo: {
+        uuid: string;
+        publisherName: string;
+        baseArtworkUrlOf: string;
+      };
+      episodes: [
+        {
+          uuid: string;
+          name: string;
+          description: string;
+          audioUrl: string;
+        },
+      ],
+    },
+  ];
+};
+
+export type PodcastSeriesDetailType = {
+    getPodcastSeries: {
+      uuid: string,
+      name: string,
+      itunesId: number,
+      description(
+        shouldStripHtmlTags: boolean
+      ): string,
+      imageUrl: string,
+      itunesInfo: {
+        uuid: string;
+        publisherName: string;
+        baseArtworkUrlOf: string
+      },
+      episodes: [
+        {
+          uuid: string,
+          name: string,
+          description(
+            shouldStripHtmlTags: boolean
+          ): string,
+          audioUrl: string
+        }
+      ]
+      
+    }
+}
+
+export type SinglePodcastType = {
+  uuid: string;
+  name: string;
+  itunesId: number;
+  description: string;
+  imageUrl: string;
+  itunesInfo: {
+    uuid: string;
+    publisherName: string;
+    baseArtworkUrlOf: string;
+  }
+  episodes: [
+    {
+      uuid: string;
+      name: string;
+      description: string;
+      audioUrl: string;
+    },
+  ];
+};
