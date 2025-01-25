@@ -47,6 +47,7 @@ const config = {
           "linear-gradient(270deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.00) 100%)",
 
         nav_hero_bg_image: "url('/assets/podcastPicThree.svg')",
+        listen_bg_image: "url('/assets/latteWithPodcasts.svg')",
       },
 
       borderRadius: {
@@ -63,10 +64,17 @@ const config = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        smallPing: {
+          "75%, 100%": {
+            transform: "scale(1.2)",
+            opacity: "0.5",
+          },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        smallPing: "smallPing 1.5s cubic-bezier(0, 0, 0.2, 1) infinite",
       },
     },
   },

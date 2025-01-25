@@ -1,34 +1,41 @@
 import Link from "next/link";
 import { Button } from "./button";
+import { motion } from "motion/react";
 import Image from "next/image";
 
-const DiscoverSection = () => {
+const DiscoverSection = ({ imageScale }: any) => {
   return (
-    <div className="flex flex-col md:flex-row items-center  bg-black-1">
-      <div className="w-full sm:w-[50%] p-8">
-        <Image
-          src="/assets/podcastPicFour.svg"
-          alt="man podcasting"
-          width={100}
-          height={100}
-          className="w-full rounded-xl"
-        />
+    <div className="flex flex-col sm:flex-row w-full bg-black-1 p-6">
+      <div className="w-full sm:w-[50%] sm:flex relative rounded-xl overflow-hidden">
+        <motion.div style={{ scale: imageScale }} className="w-full h-full">
+          <Image
+            src="/assets/podcastPicFour.svg"
+            alt="man podcasting"
+            width={100}
+            height={100}
+            className="w-full h-full object-cover rounded-xl"
+          />
+        </motion.div>
       </div>
-      <div className="flex flex-col justify-start w-full sm:w-[50%] px-6 sm:px-4">
-        <p className="text-white-4">Delve into new ideas</p>
-        <div className="w-10 h-2 mt-2 bg-gold-1" />
+      <div className="flex flex-col justify-start w-full sm:w-[50%] pt-2 sm:p-4">
+        <p className="text-white-4">DELVE INTO NEW IDEAS</p>
+        <div className="w-[186px] h-2 mt-2 bg-gold-1" />
         <h1 className="text-white-1 text-3xl mt-8">
-          Listen to great documentaries, news briefs & commentary
+          Listen to Great Documentaries, News Briefs, Commentary & Much More
         </h1>
-        <p className="text-white-4 text-sm mt-5">
-          On Podcasting, you can also listen to your favorite podcasts as well
-          as discover new ones. It is now easier to stay up-to-date.{" "}
-        </p>
-        <Link href="/sign-up" passHref legacyBehavior>
-          <Button className="bg-gold-1 w-[120px] rounded-3xl mt-8">
-            Discover
-          </Button>
-        </Link>
+        <div className="flex flex-col h-full place-content-between">
+          <p className="text-white-4 text-sm xl:text-lg my-5">
+            On PODCASTING, you can also listen to your favorite podcasts as well
+            as discover new ones. It is now easier to stay up-to-date with the
+            latest content.
+          </p>
+
+          <Link href="/sign-up" passHref legacyBehavior>
+            <Button className="bg-gold-1 w-[33%] m-auto rounded-3xl">
+              Discover
+            </Button>
+          </Link>
+        </div>
       </div>
     </div>
   );

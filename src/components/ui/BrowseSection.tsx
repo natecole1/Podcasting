@@ -2,33 +2,39 @@ import Link from "next/link";
 import { Button } from "./button";
 import Image from "next/image";
 
+
 const BrowseSection = () => {
   return (
-    <div className="flex items-center bg-black-1 p-6">
+    <div className="flex bg-black-1 p-6">
       <div className="flex flex-col justify-start w-full sm:w-[50%]">
-        <p className="text-white-4">Grow your brand</p>
-        <div className="w-10 h-2 mt-2 bg-gold-1" />
+        <p className="text-white-4">GROW YOUR BRAND</p>
+        <div className="w-40 h-2 mt-2 bg-gold-1" />
         <h1 className="text-gold-1 text-3xl mt-8">
-          Reach a broader range of listeners and increase your audience
+          Reach a Broader Range of Listeners and Increase Your Audience
         </h1>
-        <p className="text-white-4 text-sm mt-5">
-          Podcasting is a new platform designed to help you take advantage of a
-          great new space to engage with your listeners.{" "}
-        </p>
-        <Link href="/sign-up" passHref legacyBehavior>
-          <Button className="bg-gold-1 w-[120px] rounded-3xl mt-8">
-            Explore
-          </Button>
-        </Link>
+        <div className="flex flex-col h-full place-content-between">
+          <p className="text-white-4 text-sm xl:text-lg my-5">
+            Podcasting is a new platform designed to help you take advantage of
+            a great new space to engage with your listeners. Create interesting
+            content and allow listeners to find you.
+          </p>
+          <Link href="/sign-up" passHref legacyBehavior>
+            <Button className="bg-gold-1 w-[33%] rounded-3xl m-auto ">
+              Create
+            </Button>
+          </Link>
+        </div>
       </div>
-      <div className="sm:w-[50%] p-8 hidden sm:flex">
-        <Image
-          src="/assets/podcastPicFive.svg"
-          alt="man podcasting"
-          width={100}
-          height={100}
-          className="rounded-xl w-full"
-        />
+      <div className="w-[50%] hidden sm:flex relative rounded-xl overflow-hidden">
+        <div className="w-full h-full">
+          <Image
+            src="/assets/podcastPicFive.svg"
+            alt="man podcasting"
+            width={100}
+            height={100}
+            className="rounded-xl w-full h-full object-cover"
+          />
+        </div>
       </div>
     </div>
   );
