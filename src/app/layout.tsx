@@ -3,6 +3,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Root from "../components/ui/Root";
 
+import { WebVitals } from "../components/ui/WebVitals";
+
 import "./globals.css";
 
 
@@ -19,6 +21,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <Root children={children}/>
+    <>
+      <WebVitals />
+      <Root children={children} />
+    </>
   );
 }

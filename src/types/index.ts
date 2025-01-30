@@ -361,3 +361,10 @@ export type SinglePodcastType = {
     },
   ];
 };
+
+export type PodcastType = {
+  host?: string;
+  title?: string;
+  imgURL?: string;
+  podcastId?: string;
+};

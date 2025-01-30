@@ -18,6 +18,9 @@ const config = {
       },
     },
     extend: {
+      boxShadow: {
+        "custom-sm-light": "1px 1px 30px rgba(255,255,255,0.2)"
+      },
       colors: {
         white: {
           1: "#FFFFFF",

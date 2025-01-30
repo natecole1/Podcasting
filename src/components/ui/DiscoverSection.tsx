@@ -2,10 +2,24 @@ import Link from "next/link";
 import { Button } from "./button";
 import { motion } from "motion/react";
 import Image from "next/image";
+import { useRef } from "react";
 
-const DiscoverSection = ({ imageScale }: any) => {
+import { useScroll, useTransform } from 'motion/react';
+
+const DiscoverSection = () => {
+   const containerRef = useRef(null);
+   const { scrollYProgress } = useScroll({
+     target: containerRef,
+     offset: ["start end", "start start"],
+   });
+   const imageScale = useTransform(scrollYProgress, [0, 1], [2, 1]);
+
+
   return (
-    <div className="flex flex-col sm:flex-row w-full bg-black-1 p-6">
+    <div
+      ref={containerRef}
+      className="flex flex-col sm:flex-row w-full bg-black-1 p-6"
+    >
       <div className="w-full sm:w-[50%] sm:flex relative rounded-xl overflow-hidden">
         <motion.div style={{ scale: imageScale }} className="w-full h-full">
           <Image

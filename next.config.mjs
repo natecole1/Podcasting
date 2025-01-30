@@ -26,10 +26,29 @@ const nextConfig = {
         protocol: "https",
         hostname: "megaphone.imgix.net",
       },
-     
+      {
+        protocol: "https",
+        hostname: "www.omnycontent.com",
+      },
+      {
+        protocol: "https",
+        hostname: "d3t3ozftmdmh3i.cloudfront.net",
+      },
+      {
+        protocol: "https",
+        hostname: "f.prxu.org",
+      },
+      {
+        protocol: "http",
+        hostname: "ichef.bbci.co.uk",
+      },
+      {
+        protocol: "https",
+        hostname: "static.libsyn.com",
+      },
     ],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
-    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384]
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
   },
 };
 

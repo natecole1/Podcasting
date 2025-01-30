@@ -13,16 +13,12 @@ import Navbar from "@/src/components/ui/Navbar";
 import VideoBackground from "@/src/components/ui/VideoBackground";
 import SmoothScroll from "@/src/components/ui/SmoothScroll";
 
-import { useScroll, useTransform } from 'motion/react';
+
+
+
 
 const Home = () => {
-  const containerRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ['start end', 'start start']
-  });
-  const imageScale = useTransform(scrollYProgress, [0, 1], [2, 1])
-
+ 
   return (
     <>
       <SmoothScroll>
@@ -31,9 +27,9 @@ const Home = () => {
           <Navbar />
           <Hero />
         </div>
-        <div ref = {containerRef}>
+        <div >
           <CreateSection/>
-          <DiscoverSection imageScale = {imageScale}/>
+          <DiscoverSection/>
           <BrowseSection/>
           <ListenToPodcastSection />
           <ListenOverviewSection />
@@ -45,4 +41,5 @@ const Home = () => {
   );
 };
 
+ 
 export default Home;
