@@ -45,7 +45,7 @@ const DiscoverSection = () => {
           </p>
 
           <Link href="/sign-up" passHref legacyBehavior>
-            <Button className="bg-gold-1 w-[33%] m-auto rounded-3xl">
+            <Button className="bg-gold-1 w-[33%] m-auto rounded-3xl duration-300 active:scale-90">
               Discover
             </Button>
           </Link>

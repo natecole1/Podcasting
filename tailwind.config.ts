@@ -19,7 +19,7 @@ const config = {
     },
     extend: {
       boxShadow: {
-        "custom-sm-light": "1px 1px 30px rgba(255,255,255,0.2)"
+        "custom-sm-light": "1px 1px 30px rgba(255,255,255,0.2)",
       },
       colors: {
         white: {
@@ -51,6 +51,12 @@ const config = {
 
         nav_hero_bg_image: "url('/assets/podcastPicThree.svg')",
         listen_bg_image: "url('/assets/latteWithPodcasts.svg')",
+        background_one: "url('/assets/background_pattern1.png')",
+        background_two: "url('/assets/background_pattern2.png')",
+        background_three: "url('/assets/background_pattern3.png')",
+        background_four: "url('/assets/background_pattern4.png')",
+        blackOverlay:
+          "linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.8) 100% )",
       },
 
       borderRadius: {

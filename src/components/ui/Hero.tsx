@@ -16,7 +16,7 @@ const Hero = () => {
         PODCASTING is a podcast creation and streaming platform.
       </p>
       <Link href="/sign-up" passHref legacyBehavior>
-        <Button className="bg-gold-1 w-[120px] rounded-3xl mt-5">
+        <Button className="bg-gold-1 w-[120px] rounded-3xl mt-5 duration-300 active:scale-90">
           Get Started
         </Button>
       </Link>

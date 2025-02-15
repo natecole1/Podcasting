@@ -39,6 +39,7 @@
     --ring: 222.2 84% 4.9%;
 
     --radius: 0.5rem;
+
   }
 
   .dark {
@@ -114,4 +115,87 @@
   .image_div {
     @apply flex-col flex-center mt-5 w-full h-[142px] flex-none cursor-pointer rounded-xl border-dashed border-black-6 bg-black-1;
   }
+}
+
+/* Input range - chrome and safari */
+input[type='range'] {
+  --range-progress: 0;
+
+  -webkit-appearance: none;
+  appearance: none;
+  position: relative;
+  background: #ccc;
+  width: 100%;
+  height: 2px;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+
+/* Input range - firefox */
+input[type='range']::-moz-range-track {
+  position: relative;
+  background: #ccc;
+  width: 100%;
+  height: 2px;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+/* played progress length - Chrome & safari*/
+input[type='range']::before {
+  content: '';
+  height: 2px;
+  background: #DCCA87;
+  width: var(--range-progress);
+  border-bottom-left-radius: 2px;
+  border-top-left-radius: 2px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* played progress length - firefox */
+input[type='range']::-moz-range-progress {
+  background: #DCCA87;
+  border-bottom-left-radius: 2px;
+  border-top-left-radius: 2px;
+  height: 2px;
+}
+
+/* slider thumb - chrome and safari */
+input[type='range']::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 8px;
+  width: 8px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  position: relative;
+}
+
+.volumn::-webkit-slider-thumb {
+  background-color: #DCCA87;
+}
+
+/* dragging thumb - chrome and safari */
+input[type='range']:active::-webkit-slider-thumb {
+  transform: scale(1.2);
+  background-color: #DCCA87;
+}
+
+/* slider thumb - firefox */
+input[type='range']::-moz-range-thumb {
+  height: 8px;
+  width: 8px;
+  border-radius: 50%;
+  background: #DCCA87;
+  cursor: pointer;
+  border: transparent;
+  position: relative;
+}
+/* dragging thumb - firefox */
+input[type='range']:active::-moz-range-thumb {
+  transform: scale(1.2);
+  background-color: #DCCA87;
 }

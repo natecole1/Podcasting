@@ -19,7 +19,7 @@ const BrowseSection = () => {
             content and allow listeners to find you.
           </p>
           <Link href="/sign-up" passHref legacyBehavior>
-            <Button className="bg-gold-1 w-[33%] rounded-3xl m-auto ">
+            <Button className="bg-gold-1 w-[33%] rounded-3xl m-auto duration-300 active:scale-90">
               Create
             </Button>
           </Link>
