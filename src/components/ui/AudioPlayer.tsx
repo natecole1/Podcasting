@@ -1,15 +1,20 @@
 'use client'
 import React, { useState, useCallback, useEffect, useRef, ChangeEvent } from 'react'
+import Image from 'next/image'
 
 import { FaPlay } from 'react-icons/fa'
 import { FaPause } from 'react-icons/fa'
-import { RiRewindFill, RiRewindStartFill } from 'react-icons/ri'
+import { RiReplay15Line, RiRewindFill, RiForward15Line } from 'react-icons/ri'
 import { BsFastForwardFill, BsVolumeDownFill, BsVolumeUpFill, BsVolumeMuteFill } from 'react-icons/bs'
-import { AiFillFastForward } from 'react-icons/ai'
 
+import { audioPlayerProps } from '@/src/types'
 
-const AudioPlayer = ({ audioUrl }: string) => {
-    const [ isPlaying, setIsPlaying ] = useState(false);
+import { useSelector, useDispatch } from "react-redux";
+import { toggleIsPlaying } from "@/src/lib/features/play/playSlice";
+import type { RootState } from "@/src/lib/store";
+
+const AudioPlayer = ({ audioUrl, handlePrevClick, handleNextClick }: audioPlayerProps) => {
+
     const [ currentTime, setCurrentTime ] = useState(0);
     const [ duration, setDuration ] = useState(0);
     const [ volume, setVolume ] = useState(60);
@@ -18,6 +23,10 @@ const AudioPlayer = ({ audioUrl }: string) => {
     const audioPlayerRef = useRef<HTMLAudioElement>(null);
     const progressBarRef = useRef<HTMLInputElement>(null);
     const playAnimationRef = useRef<number | null>(null)
+   
+
+     const isPlaying = useSelector((state: RootState) => state.isPlaying.value)
+     const dispatch = useDispatch();
    
 
     const calculateTime = (time: number | undefined) => {
@@ -43,7 +52,7 @@ const AudioPlayer = ({ audioUrl }: string) => {
     }
 
     const updateProgress = useCallback(() => {
-      if ( audioPlayerRef.current && progressBarRef.current && duration) {
+      if ( audioPlayerRef.current && progressBarRef.current) {
         const currentTime = audioPlayerRef.current?.currentTime;
         setCurrentTime(currentTime);
         progressBarRef.current.value = currentTime.toString();
@@ -52,39 +61,42 @@ const AudioPlayer = ({ audioUrl }: string) => {
           `${(currentTime / duration ) * 100}%`
         )
       }
-    },[duration, setCurrentTime, audioPlayerRef, progressBarRef])
+    },[ currentTime, audioPlayerRef, progressBarRef])
 
     const startAnimation = useCallback(() => {
-      if (audioPlayerRef.current && progressBarRef.current && duration) {
+      if (audioPlayerRef.current && progressBarRef.current) {
         const animate = () => {
           updateProgress();
           playAnimationRef.current = requestAnimationFrame(animate);
         }
         playAnimationRef.current = requestAnimationFrame(animate);
       }
-    }, [updateProgress, duration, audioPlayerRef, progressBarRef])
+    }, [ updateProgress, audioPlayerRef, progressBarRef])
+
+    useEffect(() => {
+       if (isPlaying) {
+         audioPlayerRef.current?.play();
+         startAnimation();
+       } else {
+         audioPlayerRef.current?.pause();
+         if (playAnimationRef.current !== null) {
+           cancelAnimationFrame(playAnimationRef.current);
+           playAnimationRef.current = null;
+         }
+         updateProgress();
+       }
+
+       return () => {
+         if (playAnimationRef.current !== null) {
+           cancelAnimationFrame(playAnimationRef.current);
+         }
+       };
+
+    },[isPlaying, audioUrl])
 
     const handlePlayPause = () => {
-       
-        setIsPlaying(prev => !prev);
+        dispatch(toggleIsPlaying());
 
-        if(!isPlaying) {
-            audioPlayerRef.current?.play();
-            startAnimation();
-        } else {
-            audioPlayerRef.current?.pause();
-            if (playAnimationRef.current !== null) {
-              cancelAnimationFrame(playAnimationRef.current);
-              playAnimationRef.current = null;
-            }
-            updateProgress();
-        }
-
-        return () => {
-          if (playAnimationRef.current !== null) {
-            cancelAnimationFrame(playAnimationRef.current);
-          }
-        }
     }
     
 
@@ -103,14 +115,14 @@ const AudioPlayer = ({ audioUrl }: string) => {
    
     const handleSkipForward = () => {
       if (audioPlayerRef.current) {
-        audioPlayerRef.current.currentTime += 30;
+        audioPlayerRef.current.currentTime += 15;
         updateProgress();
       }
     }
     
     const handleSkipBackward = () => {
       if (audioPlayerRef.current) {
-        audioPlayerRef.current.currentTime -= 30;
+        audioPlayerRef.current.currentTime -= 15;
         updateProgress();
       }
     }
@@ -124,17 +136,17 @@ const AudioPlayer = ({ audioUrl }: string) => {
     }
 
     const handleVolumeClick = () => {
-      // setMuteVolume(prev => !prev);
-      // setVolume(Number(0));
+      setMuteVolume(prev => !prev);
+      setVolume(Number(0));
 
-      // if(audioPlayerRef.current) {
-      //   audioPlayerRef.current.volume = 0;
-      //   audioPlayerRef.current.muted = muteVolume;
-      // }
+      if(audioPlayerRef.current) {
+        audioPlayerRef.current.volume = 0;
+        audioPlayerRef.current.muted = muteVolume;
+      }
     }
 
   return (
-    <div className="w-full text-white-1 flex flex-col items-center justify-center p-4 gap-4 ">
+    <div className="w-full text-white-1 flex flex-col items-center justify-center p-2 gap-4 ">
       <div>
         <audio
           ref={audioPlayerRef}
@@ -144,30 +156,29 @@ const AudioPlayer = ({ audioUrl }: string) => {
         />
       </div>
       <div className=" w-[80%] flex justify-between items-center">
-        <div className="text-lg w-12 flex items-center">
+        <div className="text-md sm:text-lg w-12 flex items-center">
           <span>{calculateTime(currentTime)}</span>
         </div>
-        <div className=" w-[90%] flex items-center justify-center">
+        <div className=" w-[80%] flex justify-center ">
           <input
             type="range"
             ref={progressBarRef}
             defaultValue={0}
-            className=" appearance-none w-full h-2 bg-gray-300 max-w-[80%] rounded-full cursor-pointer "
+            className="cursor-pointer "
             onChange={handleProgressChange}
           />
         </div>
-        <div className="text-lg">
+        <div className="text-md sm:text-lg w-12 flex items-start">
           <span>{duration && !isNaN(duration) && calculateTime(duration)}</span>
         </div>
       </div>
-      <div className="flex w-full p-4">
-        
-        <div className="flex items-center justify-center gap-6 w-full">
-          {/* <button className=" text-xl">
-          <RiRewindStartFill size={30} />
-        </button> */}
+      <div className="flex w-full items-center justify-center gap-8">
+        <div className="flex items-center justify-center gap-6 md:ml-36">
+          <button className=" text-xl" onClick={handlePrevClick}>
+            <RiRewindFill className="text-3xl hover:text-4xl hover:text-gold-1 transition duration-500 ease-in-out" />
+          </button>
           <button className=" text-xl" onClick={handleSkipBackward}>
-            <RiRewindFill size={30} />
+            <RiReplay15Line className="text-3xl hover:text-4xl hover:text-gold-1 hover:-rotate-45 transition duration-500 ease-in-out" />
           </button>
           <button
             onClick={handlePlayPause}
@@ -176,13 +187,13 @@ const AudioPlayer = ({ audioUrl }: string) => {
             {isPlaying ? <FaPause /> : <FaPlay />}
           </button>
           <button className=" text-xl" onClick={handleSkipForward}>
-            <BsFastForwardFill size={30} />
+            <RiForward15Line className="text-3xl hover:text-4xl hover:text-gold-1 hover:rotate-45 transition duration-500 ease-in-out" />
           </button>
-          {/* <button className=" text-xl">
-          <AiFillFastForward size={40} />
-        </button> */}
+          <button className=" text-xl" onClick={handleNextClick}>
+            <BsFastForwardFill className="text-3xl hover:text-4xl hover:text-gold-1 transition duration-500 ease-in-out" />
+          </button>
         </div>
-        {/* <div className="flex items-center justify-center ml-6  group">
+        <div className=" hidden md:flex items-center justify-center group">
           <button onClick={handleVolumeClick}>
             {muteVolume || volume < 3 ? (
               <BsVolumeMuteFill size={25} />
@@ -193,11 +204,11 @@ const AudioPlayer = ({ audioUrl }: string) => {
             )}
           </button>
           <div>
-            <div className="relative opacity-0 group-hover:opacity-100">
-              <div className="z-50 ">
+            <div className="relative opacity-0 group-hover:opacity-100 ml-1">
+              <div className="z-50 flex items-center">
                 <input
                   type="range"
-                  className="-rotate-90 absolute -top-10 -left-8"
+                  className=""
                   value={volume}
                   min={0}
                   max={100}
@@ -206,7 +217,7 @@ const AudioPlayer = ({ audioUrl }: string) => {
               </div>
             </div>
           </div>
-        </div> */}
+        </div>
       </div>
     </div>
   );

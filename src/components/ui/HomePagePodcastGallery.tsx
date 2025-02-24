@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react'
+import React from 'react'
 import NoteworthyPodcasts from './NoteworthyPodcasts';
 import TopTenPodcasts from './TopTenPodcasts';
 import TopTechPodcasts from './TopTechPodcasts';

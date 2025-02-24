@@ -18,7 +18,6 @@ import Link from 'next/link';
 
 const TopTenPodcasts = () => {
    const { data: podcasts, isLoading, isError } = useGetTopTenPodcastsDetailsQuery();
-
  
   return (
     <div className="pt-10 w-full ">
@@ -26,7 +25,7 @@ const TopTenPodcasts = () => {
         <h1 className="text-gold-1">Top Podcasts</h1>
         {isLoading ? (
           <div className='w=full h-full flex justify-center'>
-            <Skeleton className='w-[90%] h-[200px] bg-black-1 rounded-2xl'/>
+            <Skeleton className='w-[90%] h-[220px] bg-black-1 rounded-2xl'/>
           </div>
         ) : (
 

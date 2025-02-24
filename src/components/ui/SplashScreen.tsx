@@ -8,7 +8,7 @@ const SplashScreen = ({setIsLoading}: any) => {
     <div className="bg-[#000] m-auto h-screen flex items-center justify-center">
       <AnimatePresence>
         <motion.h3
-          className="text-gold-1 text-lg xl:text-2xl overflow-hidden whitespace-nowrap"
+          className="text-gold-1 text-xl font-bold xl:text-2xl overflow-hidden whitespace-nowrap"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 3, ease: "easeInOut"}}

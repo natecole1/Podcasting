@@ -368,3 +368,9 @@ export type PodcastType = {
   imgURL?: string;
   podcastId?: string;
 };
+
+export type audioPlayerProps = {
+  audioUrl: string | undefined;
+  handlePrevClick: () => void;
+  handleNextClick: () => void;
+};

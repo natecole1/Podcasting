@@ -23,12 +23,12 @@ export const apiSlice = createApi({
           {
             getMultiplePodcastSeries(
               uuids: [
-                "b35214a1-ff08-45a9-bc1e-c5fb38be009e"
+                "cb8d858a-3ef4-4645-8942-67e55c0927f2"
                 "adb07ddc-d083-427f-a5a2-7bd8e197ac01"
                 "23bc333e-295a-48d9-b873-0e3d5e882f95"
                 "fc3c8bb1-1b2a-4619-a029-8866610ae292"
                 "99157d6b-a144-445a-a731-b6c84c417486"
-                "cb8d858a-3ef4-4645-8942-67e55c0927f2"
+                "b35214a1-ff08-45a9-bc1e-c5fb38be009e"
                 "c5000a5a-ad47-4956-a17a-c88ab181346c"
                 "4e5eee8b-284d-4cfd-8b0d-1ffa188d9c8e"
                 "dd06fb11-3fde-4151-b162-dbd2ae118dbe"

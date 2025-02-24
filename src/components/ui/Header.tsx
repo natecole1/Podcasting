@@ -8,7 +8,9 @@ const Header = () => {
         <div className="md:hidden cursor-pointer">
           <MobileMenu />
         </div>
-        <UserButton />
+        <div className="w-10 h-10">
+          <UserButton />
+        </div>
       </SignedIn>
     </header>
   );

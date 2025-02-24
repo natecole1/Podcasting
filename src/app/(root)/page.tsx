@@ -14,9 +14,6 @@ import VideoBackground from "@/src/components/ui/VideoBackground";
 import SmoothScroll from "@/src/components/ui/SmoothScroll";
 
 
-
-
-
 const Home = () => {
  
   return (

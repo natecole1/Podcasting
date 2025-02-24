@@ -7,7 +7,6 @@ const SmPlayButton = () => {
      <button className="w-[40px] h-[40px] flex items-center justify-center bg-gold-1  rounded-full">
        <FaPlay 
         className ='text-black-1'
-        
        />
       </button>
   )
