@@ -1,32 +1,41 @@
 'use client'
-import React from 'react';
-import { notFound} from 'next/navigation';
-import Image from 'next/image'
-import { useGetPodcastSeriesDetailsQuery } from '@/src/lib/features/api/apiSlice';
+import React from "react";
 
-const NoteworthyPodcastsDetail = () => {
+import { notFound, useParams } from "next/navigation";
+import { useGetPodcastSeriesDetailsQuery } from "@/src/lib/features/api/apiSlice";
 
-    const { data: podcastSeries } = useGetPodcastSeriesDetailsQuery();
-    console.log(podcastSeries)
+import PodcastPlayHeader from "@/src/components/ui/PodcastPlayHeader";
+import PodcastPlayEpisodes from "@/src/components/ui/PodcastPlayEpisodes";
 
-    if(!podcastSeries) {
-      notFound();
-    }
-    
+import { bgImageId } from "@/src/constants";
+
+const NoteworthySinglePodcastDetail = () => {
+
+
+  const { data: podcastSeries } = useGetPodcastSeriesDetailsQuery();
+  
+
+  const podcast = podcastSeries?.getPodcastSeries
+  console.log(podcast)
+
+  if (!podcast) {
+    notFound();
+  }
+
   return (
-    <div className="text-white-1 bg-black-1 w-full h-screen">
-      <div>
-        <Image
-          src={podcastSeries?.getPodcastSeries.imageUrl}
-          alt="podcast image"
-          width={150}
-          height={150}
-          quality={100}
-          className="rounded-lg w-[80%] h-[180px] aspect-square"
-        />
-      </div>
+    <div>
+      <PodcastPlayHeader
+        name={podcast.name}
+        description={podcast.description}
+        imageUrl={podcast.imageUrl}
+        bgImageId={bgImageId[0]}
+      />
+      <PodcastPlayEpisodes episodes={podcast.episodes} />
     </div>
-  )
-}
+  );
+};
 
-export default NoteworthyPodcastsDetail
+export default NoteworthySinglePodcastDetail;
+
+
+

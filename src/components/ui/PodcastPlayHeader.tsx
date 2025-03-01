@@ -1,30 +1,34 @@
 'use client'
-import { useGetNoteworthyPodcastsDetailsQuery } from '@/src/lib/features/api/apiSlice';
-import { useParams } from 'next/navigation';
 import Image from 'next/image';
-import React, { useState } from 'react'
-import PlayButton from './PlayButton';
-import PauseButton from './PauseButton';
+import React from 'react'
+
 import SaveButton from './SaveButton';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '@/src/lib/store';
+import { toggleIsPlaying } from "@/src/lib/features/play/playSlice";
+import { displayAudioPlayer } from '@/src/lib/features/displayAudioPlayer/displayAudioPlayerSlice';
+import HeaderPlayPauseButton from './HeaderPlayPauseButton';
+import { PodcastPlayHeaderProps } from '@/src/types';
+import { cn } from '@/src/lib/utils';
 
-const PodcastPlayHeader = () => {
-    const params = useParams<{ podcastId: string }>();
 
-    const { data: noteworthyPodcastSeries } =
-        useGetNoteworthyPodcastsDetailsQuery();
+const PodcastPlayHeader = ({name, description, imageUrl, bgImageId}: PodcastPlayHeaderProps) => {
+  const isPlaying = useSelector((state: RootState) => state.isPlaying.value);
+  
+  const dispatch = useDispatch();
+  
+  const handleClick = () => {
+    dispatch(toggleIsPlaying());
+    dispatch(displayAudioPlayer());
+  }
 
-    const podcast = noteworthyPodcastSeries?.getMultiplePodcastSeries.find(
-    (p) => p.uuid === params.podcastId
-    ); 
-    console.log(podcast)
 
-    const [ isPlaying, setIsPlaying ] = useState(false);
   return (
-    <div className="text-white-1 w-full bg-background_one h-[100vh]">
+    <div className={cn(`text-white-1 w-full bg-background_${bgImageId} bg-no-repeat bg-cover h-[100vh]`)}>
       <div className="flex flex-col justify-center items-center w-full h-full gap-8 bg-blackOverlay">
         <div>
           <Image
-            src={podcast?.imageUrl}
+            src={imageUrl}
             alt="podcast image"
             width={80}
             height={80}
@@ -33,14 +37,19 @@ const PodcastPlayHeader = () => {
         </div>
         <div className=" w-full md:w-[80%] flex flex-col text-center p-4 gap-4 lg:gap-8">
           <h1 className="font-bold text-2xl md:text-4xl lg:text-5xl">
-            {podcast?.name}
+            {name}
           </h1>
           <p className="line-clamp-4 text-sm md:text-lg xl:text-2xl">
-            {podcast?.description}
+            {description}
           </p>
         </div>
         <div className="m-10 w-full flex gap-4 lg:gap-8 items-end justify-center">
-          <div>{isPlaying ? <PauseButton /> : <PlayButton />}</div>
+          <div>
+            <HeaderPlayPauseButton 
+             onClick={handleClick}
+             isPlaying={isPlaying}
+            />
+          </div>
           <div>
             <SaveButton />
           </div>

@@ -1,19 +1,18 @@
 'use client'
 import React, { useState, useCallback, useEffect, useRef, ChangeEvent } from 'react'
-import Image from 'next/image'
 
 import { FaPlay } from 'react-icons/fa'
 import { FaPause } from 'react-icons/fa'
 import { RiReplay15Line, RiRewindFill, RiForward15Line } from 'react-icons/ri'
 import { BsFastForwardFill, BsVolumeDownFill, BsVolumeUpFill, BsVolumeMuteFill } from 'react-icons/bs'
 
-import { audioPlayerProps } from '@/src/types'
+import { AudioPlayerProps } from '@/src/types'
 
 import { useSelector, useDispatch } from "react-redux";
 import { toggleIsPlaying } from "@/src/lib/features/play/playSlice";
 import type { RootState } from "@/src/lib/store";
 
-const AudioPlayer = ({ audioUrl, handlePrevClick, handleNextClick }: audioPlayerProps) => {
+const AudioPlayer = ({ audioUrl, handlePrevClick, handleNextClick }: AudioPlayerProps) => {
 
     const [ currentTime, setCurrentTime ] = useState(0);
     const [ duration, setDuration ] = useState(0);
@@ -96,10 +95,8 @@ const AudioPlayer = ({ audioUrl, handlePrevClick, handleNextClick }: audioPlayer
 
     const handlePlayPause = () => {
         dispatch(toggleIsPlaying());
-
     }
     
-
     const handleProgressChange = () => {
   
       if (audioPlayerRef.current && progressBarRef.current) {
@@ -168,7 +165,7 @@ const AudioPlayer = ({ audioUrl, handlePrevClick, handleNextClick }: audioPlayer
             onChange={handleProgressChange}
           />
         </div>
-        <div className="text-md sm:text-lg w-12 flex items-start">
+        <div className="text-md sm:text-lg w-12 flex items-start pl-1">
           <span>{duration && !isNaN(duration) && calculateTime(duration)}</span>
         </div>
       </div>

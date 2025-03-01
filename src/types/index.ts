@@ -1,5 +1,5 @@
 import { Id } from "@/convex/_generated/dataModel";
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, ReactNode } from "react";
 
 export interface GenerateThumbnailProps {
   image: string;
@@ -308,7 +308,7 @@ export type TopPodcastsDetailType = {
           description: string;
           audioUrl: string;
         },
-      ],
+      ];
     },
   ];
 };
@@ -341,22 +341,22 @@ export type PodcastSeriesDetailType = {
     }
 }
 
-export type SinglePodcastType = {
-  uuid: string;
-  name: string;
-  itunesId: number;
-  description: string;
-  imageUrl: string;
-  itunesInfo: {
-    uuid: string;
-    publisherName: string;
-    baseArtworkUrlOf: string;
-  }
+export type SinglePodcastProps = {
+  // uuid: string;
+  // name: string;
+  // itunesId: number;
+  // description: string;
+  // imageUrl: string;
+  // itunesInfo: {
+  //   uuid: string;
+  //   publisherName: string;
+  //   baseArtworkUrlOf: string;
+  // }
   episodes: [
     {
       uuid: string;
       name: string;
-      description: string;
+      description: string | ((shouldStripHtmlTags: boolean) => string);
       audioUrl: string;
     },
   ];
@@ -369,8 +369,36 @@ export type PodcastType = {
   podcastId?: string;
 };
 
-export type audioPlayerProps = {
+export type AudioPlayerProps = {
   audioUrl: string | undefined;
   handlePrevClick: () => void;
   handleNextClick: () => void;
+};
+
+export type CloseButtonProp = {
+  onClick: () => void
+}
+
+export type EpisodeDetailsProps = {
+  name: string;
+  description: string | ((shouldStripHtmlTags: boolean) => string);
+};
+
+export type PlayPauseButtonProps = {
+  onClick: () => void;
+  podcastEpisodeId: number;
+  id: number;
+  isPlaying: boolean;
+}
+
+export type HeaderPlayPauseButtonProps = {
+  onClick: () => void;
+  isPlaying: boolean;
+}
+
+export type PodcastPlayHeaderProps = {
+  name: string;
+  description: string | ((shouldStripHtmlTags: boolean) => string);
+  imageUrl: string;
+  bgImageId: string;
 };

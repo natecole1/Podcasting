@@ -86,3 +86,5 @@ export const footerLinks = [
     label: "x",
   },
 ];
+
+export  const bgImageId = ["one", "two", "three", "four"];

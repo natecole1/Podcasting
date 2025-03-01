@@ -1,8 +1,12 @@
 "use client";
 import React from "react";
-import Image from "next/image";
+
 import { notFound, useParams } from "next/navigation";
 import { useGetTopTenPodcastsDetailsQuery } from "@/src/lib/features/api/apiSlice";
+
+import { bgImageId } from "@/src/constants";
+import PodcastPlayHeader from "@/src/components/ui/PodcastPlayHeader";
+import PodcastPlayEpisodes from "@/src/components/ui/PodcastPlayEpisodes";
 
 const NoteworthyTopTenPodcastsDetail = () => {
   const params = useParams<{ podcastId: string }>();
@@ -19,14 +23,14 @@ const NoteworthyTopTenPodcastsDetail = () => {
   }
 
   return (
-    <div className="text-white-1 bg-black-1 w-full h-screen">
-      <Image
-        src={podcast.imageUrl}
-        alt="podcast image"
-        width={80}
-        height={80}
-        className=" min-w-20 rounded-lg hover:shadow-custom-sm-light hover:-translate-y-1 duration-300 ease-in"
+    <div>
+      <PodcastPlayHeader
+        name={podcast.name}
+        description={podcast.description}
+        imageUrl={podcast.imageUrl}
+        bgImageId={bgImageId[2]}
       />
+      <PodcastPlayEpisodes episodes={podcast.episodes} />
     </div>
   );
 };

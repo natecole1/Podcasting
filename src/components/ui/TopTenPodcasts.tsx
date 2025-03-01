@@ -5,6 +5,7 @@ import PodcastCard from './PodcastCard';
 import { useGetTopTenPodcastsDetailsQuery } from '@/src/lib/features/api/apiSlice';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Skeleton } from "@/components/ui/skeleton";
+import { ImSpinner } from 'react-icons/im'
 
 import 'swiper/css';
 import 'swiper/css/effect-coverflow';
@@ -15,7 +16,6 @@ import { EffectCoverflow, Pagination, Navigation } from 'swiper/modules'
 import PlayIcon from './PlayIcon';
 import Link from 'next/link';
 
-
 const TopTenPodcasts = () => {
    const { data: podcasts, isLoading, isError } = useGetTopTenPodcastsDetailsQuery();
  
@@ -24,11 +24,10 @@ const TopTenPodcasts = () => {
       <div>
         <h1 className="text-gold-1">Top Podcasts</h1>
         {isLoading ? (
-          <div className='w=full h-full flex justify-center'>
+          <div className='w=full h-full flex justify-center mt-2'>
             <Skeleton className='w-[90%] h-[220px] bg-black-1 rounded-2xl'/>
           </div>
         ) : (
-
         <Swiper
          effect={'coverflow'}
          grabCursor={true}
@@ -67,7 +66,7 @@ const TopTenPodcasts = () => {
                             imgURL={podcast.imageUrl}
                             podcastId={podcast.uuid}
                           />
-                          <PlayIcon />
+                         <PlayIcon />
                         </div>
                       </Link>
                     </SwiperSlide>
