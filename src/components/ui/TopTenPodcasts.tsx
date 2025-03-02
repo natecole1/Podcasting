@@ -5,7 +5,7 @@ import PodcastCard from './PodcastCard';
 import { useGetTopTenPodcastsDetailsQuery } from '@/src/lib/features/api/apiSlice';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Skeleton } from "@/components/ui/skeleton";
-import { ImSpinner } from 'react-icons/im'
+
 
 import 'swiper/css';
 import 'swiper/css/effect-coverflow';

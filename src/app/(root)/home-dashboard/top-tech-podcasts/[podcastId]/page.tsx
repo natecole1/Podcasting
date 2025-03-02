@@ -27,7 +27,7 @@ const NoteworthyTopTenPodcastsDetail = () => {
         name={podcast.name}
         description={podcast.description}
         imageUrl={podcast.imageUrl}
-        bgImageId={bgImageId[1]}
+        bgImage={"url(/assets/background_pattern1.png)"}
       />
       <PodcastPlayEpisodes episodes={podcast.episodes} />
     </div>

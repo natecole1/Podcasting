@@ -1,5 +1,7 @@
 import React from 'react'
 import { EpisodeDetailsProps } from '@/src/types';
+import Link from 'next/link';
+
 
 const EpisodeDetails = ({name, description}: EpisodeDetailsProps) => {
   return (
@@ -8,9 +10,10 @@ const EpisodeDetails = ({name, description}: EpisodeDetailsProps) => {
       <p className="text-sm text-gray-400 line-clamp-3 sm:line-clamp-4">
         {description}
       </p>
-      <p className=" flex justify-end text-xs hover:text-blue-600 cursor-pointer">
-        View more
-      </p>
+      
+      {/* <Modal>
+        {description}
+      </Modal> */}
     </div>
   );
 }

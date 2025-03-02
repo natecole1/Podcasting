@@ -356,7 +356,7 @@ export type SinglePodcastProps = {
     {
       uuid: string;
       name: string;
-      description: string | ((shouldStripHtmlTags: boolean) => string);
+      description: string;
       audioUrl: string;
     },
   ];
@@ -381,7 +381,7 @@ export type CloseButtonProp = {
 
 export type EpisodeDetailsProps = {
   name: string;
-  description: string | ((shouldStripHtmlTags: boolean) => string);
+  description: string;
 };
 
 export type PlayPauseButtonProps = {
@@ -398,7 +398,7 @@ export type HeaderPlayPauseButtonProps = {
 
 export type PodcastPlayHeaderProps = {
   name: string;
-  description: string | ((shouldStripHtmlTags: boolean) => string);
+  description: string;
   imageUrl: string;
-  bgImageId: string;
+  bgImage: string;
 };

@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import { useGetNoteworthyPodcastsDetailsQuery } from "@/src/lib/features/api/apiSlice";
-import { useParams } from "next/navigation";
 
 import AudioPlayer from "./AudioPlayer";
 import { useSelector, useDispatch } from "react-redux";
@@ -26,15 +24,6 @@ const PodcastPlayEpisodes = ({episodes}: SinglePodcastProps) => {
   const dispatch = useDispatch();
 
   const [podcastEpisodeId, setPodcastEpisodeId] = useState(0);
-
-  // const params = useParams<{ podcastId: string }>();
-
-  // const { data: noteworthyPodcastSeries } =
-  //   useGetNoteworthyPodcastsDetailsQuery();
-
-  // const podcast = noteworthyPodcastSeries?.getMultiplePodcastSeries.find(
-  //   (p) => p.uuid === params.podcastId
-  // );
 
   const handlePlayClick = (id: number) => {
     dispatch(toggleIsPlaying());
@@ -80,8 +69,8 @@ const PodcastPlayEpisodes = ({episodes}: SinglePodcastProps) => {
               <div className="w-full xl:w-[80%] bg-white-2 h-[1px] opacity-10 my-5 m-auto" />
               <div className="w-full flex items-center justify-start xl:justify-center gap-6">
                 <div>
-                  <PlayPauseButton 
-                    onClick={() => handlePlayClick(id)} 
+                  <PlayPauseButton
+                    onClick={() => handlePlayClick(id)}
                     podcastEpisodeId={podcastEpisodeId}
                     id={id}
                     isPlaying={isPlaying}
@@ -101,6 +90,7 @@ const PodcastPlayEpisodes = ({episodes}: SinglePodcastProps) => {
             </div>
           );
         })}
+        
       </div>
       {isAudioPlayerDisplayed && (
         <div className="fixed bottom-0 right-0 left-0 bg-[#000]/[0.8] w-full z-10 -translate-y-1 duration-500 ease-in">

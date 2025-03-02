@@ -12,7 +12,7 @@ import { PodcastPlayHeaderProps } from '@/src/types';
 import { cn } from '@/src/lib/utils';
 
 
-const PodcastPlayHeader = ({name, description, imageUrl, bgImageId}: PodcastPlayHeaderProps) => {
+const PodcastPlayHeader = ({name, description, imageUrl, bgImage}: PodcastPlayHeaderProps) => {
   const isPlaying = useSelector((state: RootState) => state.isPlaying.value);
   
   const dispatch = useDispatch();
@@ -24,7 +24,7 @@ const PodcastPlayHeader = ({name, description, imageUrl, bgImageId}: PodcastPlay
 
 
   return (
-    <div className={cn(`text-white-1 w-full bg-background_${bgImageId} bg-no-repeat bg-cover h-[100vh]`)}>
+    <div className={cn(`text-white-1 w-full bg-no-repeat bg-cover h-[100vh]`)} style={{backgroundImage: bgImage}}>
       <div className="flex flex-col justify-center items-center w-full h-full gap-8 bg-blackOverlay">
         <div>
           <Image

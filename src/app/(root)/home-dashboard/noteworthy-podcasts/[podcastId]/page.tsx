@@ -26,7 +26,12 @@ const NoteworthyMultiPodcastsDetail = () => {
 
   return (
     <div>
-      <PodcastPlayHeader name={podcast.name} description={podcast.description} imageUrl={podcast.imageUrl} bgImageId={bgImageId[0]}/>
+      <PodcastPlayHeader
+        name={podcast.name}
+        description={podcast.description}
+        imageUrl={podcast.imageUrl}
+        bgImage={"url(/assets/background_pattern4.png)"}
+      />
       <PodcastPlayEpisodes episodes={podcast.episodes} />
     </div>
   );
