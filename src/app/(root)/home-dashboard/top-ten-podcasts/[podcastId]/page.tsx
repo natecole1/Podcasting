@@ -4,7 +4,7 @@ import React from "react";
 import { notFound, useParams } from "next/navigation";
 import { useGetTopTenPodcastsDetailsQuery } from "@/src/lib/features/api/apiSlice";
 
-import { bgImageId } from "@/src/constants";
+
 import PodcastPlayHeader from "@/src/components/ui/PodcastPlayHeader";
 import PodcastPlayEpisodes from "@/src/components/ui/PodcastPlayEpisodes";
 

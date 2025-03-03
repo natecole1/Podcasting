@@ -402,3 +402,9 @@ export type PodcastPlayHeaderProps = {
   imageUrl: string;
   bgImage: string;
 };
+
+export type ModalProps = {
+  textToClick: string;
+  title: string
+  children: ReactNode;
+}

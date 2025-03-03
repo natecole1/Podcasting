@@ -1,6 +1,6 @@
 import React from 'react'
 import { EpisodeDetailsProps } from '@/src/types';
-import Link from 'next/link';
+import Modal from './Modal';
 
 
 const EpisodeDetails = ({name, description}: EpisodeDetailsProps) => {
@@ -11,9 +11,12 @@ const EpisodeDetails = ({name, description}: EpisodeDetailsProps) => {
         {description}
       </p>
       
-      {/* <Modal>
+      <Modal
+       textToClick='View more'
+       title={name}
+      >
         {description}
-      </Modal> */}
+      </Modal>
     </div>
   );
 }

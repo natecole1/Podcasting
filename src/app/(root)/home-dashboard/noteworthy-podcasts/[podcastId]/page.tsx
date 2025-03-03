@@ -9,7 +9,7 @@ import {
 import PodcastPlayHeader from "@/src/components/ui/PodcastPlayHeader";
 import PodcastPlayEpisodes from "@/src/components/ui/PodcastPlayEpisodes";
 
-import { bgImageId } from "@/src/constants";
+
 
 const NoteworthyMultiPodcastsDetail = () => {
   const params = useParams<{ podcastId: string }>();

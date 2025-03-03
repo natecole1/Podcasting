@@ -16,7 +16,7 @@ const NoteworthyPodcasts = () => {
       <div className="w-full bg-white-2 h-[1px] opacity-10" />
       <h1 className="text-gold-1 pt-5">Noteworthy Podcasts</h1>
       {isLoading ? (
-        <div className="w=full h-full flex justify-center">
+        <div className="w=full h-full flex justify-center mt-2">
           <Skeleton className="w-[90%] h-[200px] bg-black-1 rounded-2xl" />
         </div>
       ) : (
