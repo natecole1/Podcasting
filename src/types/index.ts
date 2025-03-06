@@ -356,7 +356,7 @@ export type SinglePodcastProps = {
     {
       uuid: string;
       name: string;
-      description: string;
+      description(shouldStripHtmlTags: boolean): string;
       audioUrl: string;
     },
   ];
@@ -398,7 +398,7 @@ export type HeaderPlayPauseButtonProps = {
 
 export type PodcastPlayHeaderProps = {
   name: string;
-  description: string;
+  description(shouldStripHtmlTags: boolean): string;
   imageUrl: string;
   bgImage: string;
 };
@@ -407,4 +407,25 @@ export type ModalProps = {
   textToClick: string;
   title: string
   children: ReactNode;
+}
+
+export type TopPodcastsByGenresType = {
+  getTopChartsByGenres: {
+    topChartsId: string;
+    podcastSeries: {
+      uuid: string;
+      name: string;
+      imageUrl: string;
+      description: string;
+      episodes: [
+        {
+          uuid: string;
+          name: string;
+          description: string;
+          audioUrl: string
+        }
+    ]
+    }
+   
+  }
 }

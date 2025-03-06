@@ -4,7 +4,7 @@ import { createApi } from '@reduxjs/toolkit/query/react';
 import { graphqlRequestBaseQuery } from '@rtk-query/graphql-request-base-query';
 import { gql } from 'graphql-request';
 
-import { PodcastSeriesDetailType, TopPodcastsDetailType } from '@/src/types';
+import { PodcastSeriesDetailType, TopPodcastsByGenresType, TopPodcastsDetailType } from '@/src/types';
 
 
 export const apiSlice = createApi({
@@ -56,38 +56,16 @@ export const apiSlice = createApi({
         `,
       }),
     }),
-    getPodcastSeriesDetails: builder.query<PodcastSeriesDetailType, void>({
-      query: () => ({
-        document: gql`
-          {
-            getPodcastSeries(name: "The unforgotten") {
-              uuid
-              name
-              itunesId
-              description(shouldStripHtmlTags: true)
-              imageUrl
-              itunesInfo {
-                uuid
-                publisherName
-                baseArtworkUrlOf(size: 640)
-              }
-              episodes {
-                uuid
-                name
-                description(shouldStripHtmlTags: true)
-                audioUrl
-              }
-            }
-          }
-        `,
-      }),
-    }),
+    
     getNoteworthyPodcastsDetails: builder.query<TopPodcastsDetailType, void>({
       query: () => ({
         document: gql`
           {
             getMultiplePodcastSeries(
               uuids: [
+                "4e883d98-43d1-4ac7-8de8-4afc13244393"
+                "b4b19a01-fd23-46c7-a8dd-3ce31ed127c2"
+                "b5ebbe3d-d2e0-43d1-ac41-cb2cb2f67a99"
                 "72ca3fdd-eabd-466e-b405-b50a8defd05f"
                 "874f4009-a9cc-4db2-b6d5-6c9e051e2738"
                 "e762bc99-d353-4c98-8247-25d72b743f56"
@@ -153,10 +131,34 @@ export const apiSlice = createApi({
         `,
       }),
     }),
+    getTopPodcastsByGenres: builder.query<TopPodcastsByGenresType, void>({
+      query: () => ({
+        document: gql`
+          {
+            getTopChartsByGenres(
+              taddyType: PODCASTSERIES
+              genres: PODCASTSERIES_NEWS
+            ) {
+              topChartsId
+              podcastSeries {
+                uuid
+                name
+                imageUrl
+                description(shouldStripHtmlTags: true)
+                episodes {
+                  uuid
+                  name
+                  audioUrl
+                }
+              }
+            }
+          }
+        `,
+      }),
+    }),
   }),
 });
 
-export const { useGetNoteworthyPodcastsDetailsQuery, useGetTopTechPodcastsDetailsQuery, useGetTopTenPodcastsDetailsQuery, useGetPodcastSeriesDetailsQuery } = apiSlice;
+export const { useGetNoteworthyPodcastsDetailsQuery, useGetTopPodcastsByGenresQuery, useGetTopTechPodcastsDetailsQuery, useGetTopTenPodcastsDetailsQuery } = apiSlice;
 
 
- 
