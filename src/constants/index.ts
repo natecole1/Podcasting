@@ -88,5 +88,79 @@ export const footerLinks = [
 ];
 
 export const browseCategoriesOptions = [
-
+  {
+    id: 1,
+    genre: "Arts",
+    color: "#e9502f",
+  },
+  {
+    id: 2,
+    genre: "Business",
+    color: "#2fd7e9",
+  },
+  {
+    id: 3,
+    genre: "Business_investing",
+    color: "#dd2fe9",
+  },
+  {
+    id: 4,
+    genre: "Comedy",
+    color: "#df2a4d",
+  },
+  {
+    id: 5,
+    genre: "comedy_stand_up",
+    color: "#2adf71",
+  },
+  {
+    id: 6,
+    genre: "Education",
+    color: "#2a42df",
+  },
+  {
+    id: 7,
+    genre: "Government",
+    color: "#07e541",
+  },
+  {
+    id: 8,
+    genre: "Fiction",
+    color: "#2adf71",
+  },
+  {
+    id: 9,
+    genre: "History",
+    color: "#dd2fe9",
+  },
+  {
+    id: 10,
+    genre: "News",
+    color: "#2fd7e9",
+  },
+  {
+    id: 11,
+    genre: "Religion_spirituality",
+    color: "#df2a4d",
+  },
+  {
+    id: 12,
+    genre: "Science",
+    color: "#07e541",
+  },
+  {
+    id: 13,
+    genre: "Sports",
+    color: "#e9502f",
+  },
+  {
+    id: 14,
+    genre: "Technology",
+    color: "#2fd7e9",
+  },
+  {
+    id: 15,
+    genre: "True_crime",
+    color: "#2adf71",
+  },
 ];

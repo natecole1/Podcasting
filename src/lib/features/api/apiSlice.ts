@@ -1,10 +1,13 @@
 
-
 import { createApi } from '@reduxjs/toolkit/query/react';
 import { graphqlRequestBaseQuery } from '@rtk-query/graphql-request-base-query';
 import { gql } from 'graphql-request';
 
-import { PodcastSeriesDetailType, TopPodcastsByGenresType, TopPodcastsDetailType } from '@/src/types';
+import { TopPodcastsByGenresType, TopPodcastsDetailType } from '@/src/types';
+
+import { useSelector } from 'react-redux';
+import { RootState } from "@/src/lib/store";
+
 
 
 export const apiSlice = createApi({
@@ -56,7 +59,7 @@ export const apiSlice = createApi({
         `,
       }),
     }),
-    
+
     getNoteworthyPodcastsDetails: builder.query<TopPodcastsDetailType, void>({
       query: () => ({
         document: gql`
@@ -131,13 +134,13 @@ export const apiSlice = createApi({
         `,
       }),
     }),
-    getTopPodcastsByGenres: builder.query<TopPodcastsByGenresType, void>({
-      query: () => ({
+    getTopPodcastsByGenres: builder.query<TopPodcastsByGenresType, string>({
+      query: (genre) => ({
         document: gql`
           {
             getTopChartsByGenres(
               taddyType: PODCASTSERIES
-              genres: PODCASTSERIES_NEWS
+              genres: PODCASTSERIES_${genre}
             ) {
               topChartsId
               podcastSeries {
@@ -148,6 +151,7 @@ export const apiSlice = createApi({
                 episodes {
                   uuid
                   name
+                  description(shouldStripHtmlTags: true)
                   audioUrl
                 }
               }

@@ -341,22 +341,12 @@ export type PodcastSeriesDetailType = {
     }
 }
 
-export type SinglePodcastProps = {
-  // uuid: string;
-  // name: string;
-  // itunesId: number;
-  // description: string;
-  // imageUrl: string;
-  // itunesInfo: {
-  //   uuid: string;
-  //   publisherName: string;
-  //   baseArtworkUrlOf: string;
-  // }
+export type PodcastEpisodesProps = {
   episodes: [
     {
       uuid: string;
       name: string;
-      description(shouldStripHtmlTags: boolean): string;
+      description: string;
       audioUrl: string;
     },
   ];
@@ -398,7 +388,7 @@ export type HeaderPlayPauseButtonProps = {
 
 export type PodcastPlayHeaderProps = {
   name: string;
-  description(shouldStripHtmlTags: boolean): string;
+  description: string;
   imageUrl: string;
   bgImage: string;
 };
@@ -412,7 +402,7 @@ export type ModalProps = {
 export type TopPodcastsByGenresType = {
   getTopChartsByGenres: {
     topChartsId: string;
-    podcastSeries: {
+    podcastSeries: [{
       uuid: string;
       name: string;
       imageUrl: string;
@@ -425,7 +415,13 @@ export type TopPodcastsByGenresType = {
           audioUrl: string
         }
     ]
-    }
+    }]
    
   }
+}
+
+export type BrowseCategoryCardProps = {
+  genre: string;
+  color: string;
+  onClick: () => void;
 }

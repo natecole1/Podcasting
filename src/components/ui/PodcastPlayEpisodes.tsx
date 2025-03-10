@@ -13,10 +13,10 @@ import CloseButton from "./CloseButton";
 import Waveform from "./Waveform";
 import EpisodeDetails from "./EpisodeDetails";
 import PlayPauseButton from "./PlayPauseButton";
-import { SinglePodcastProps } from "@/src/types";
+import { PodcastEpisodesProps } from "@/src/types";
 
 
-const PodcastPlayEpisodes = ({episodes}: SinglePodcastProps) => {
+const PodcastPlayEpisodes = ({episodes}: PodcastEpisodesProps) => {
   const isPlaying = useSelector((state: RootState) => state.isPlaying.value);
   const isAudioPlayerDisplayed = useSelector(
     (state: RootState) => state.isAudioPlayerDisplayed.value

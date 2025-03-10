@@ -17,7 +17,7 @@ import PlayIcon from './PlayIcon';
 import Link from 'next/link';
 
 const TopTenPodcasts = () => {
-   const { data: podcasts, isLoading, isError } = useGetTopTenPodcastsDetailsQuery();
+   const { data: podcasts, isLoading} = useGetTopTenPodcastsDetailsQuery();
  
   return (
     <div className="pt-10 w-full ">
