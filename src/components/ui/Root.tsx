@@ -2,13 +2,14 @@
 import React from 'react'
 
 import { Mulish } from "next/font/google";
-import StoreProvider from '@/src/app/StoreProvider';
+import StoreProvider from '@/src/app/providers/StoreProvider';
 import ConvexClerkProvider from '@/src/app/providers/ConvexClerkProvider';
 import SplashScreen from './SplashScreen';
 
-
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+
+
 
 
 const mulish = Mulish({ 

@@ -4,6 +4,7 @@ import { setupListeners } from "@reduxjs/toolkit/query";
 import playReducer from './features/play/playSlice'
 import displayAudioPlayerReducer from './features/displayAudioPlayer/displayAudioPlayerSlice'
 import podcastGenreReducer from './features/podcastGenre/podcastGenreSlice'
+import podcastLibraryReducer from './features/podcastLibrary/podcastLibrarySlice'
 
 
 export const makeStore = () => {
@@ -13,8 +14,11 @@ export const makeStore = () => {
             isPlaying: playReducer,
             isAudioPlayerDisplayed: displayAudioPlayerReducer,
             podcastGenre: podcastGenreReducer,
+            podcastLibrary: podcastLibraryReducer,
         },
-        middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(apiSlice.middleware),
+        middleware: (getDefaultMiddleware) => getDefaultMiddleware({
+            serializableCheck: false
+        }).concat(apiSlice.middleware),
     });
 }
 
@@ -25,3 +29,4 @@ export type AppStore = ReturnType<typeof makeStore>;
 export type AppDispatch = AppStore['dispatch'];
 
 export type RootState = ReturnType<AppStore['getState']>;
+

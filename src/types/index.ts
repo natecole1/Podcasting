@@ -342,6 +342,8 @@ export type PodcastSeriesDetailType = {
 }
 
 export type PodcastEpisodesProps = {
+  name: string;
+  imageUrl: string;
   episodes: [
     {
       uuid: string;
@@ -424,4 +426,29 @@ export type BrowseCategoryCardProps = {
   genre: string;
   color: string;
   onClick: () => void;
+}
+
+export interface PodcastGenreType {
+  value: string;
+}
+
+export type PodcastEpisodeType = {
+  podcastLibrary: {
+    id:string; 
+    title:string; 
+    podcastName: string; 
+    imageUrl: string;
+    audioUrl: string;
+  }[]
+}
+
+export type SavedLibraryPodcastProps = {
+  imageUrl: string;
+  podcastName: string;
+  podcastEpisodeTitle: string;
+  onPlayClick: () => void;
+  onDeleteClick: () => void;
+  isPlaying: boolean;
+  podcastEpisodeId: number;
+  id: number;
 }

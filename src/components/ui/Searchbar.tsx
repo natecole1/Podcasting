@@ -22,7 +22,7 @@ const Searchbar = ({ value }: any) => {
   return (
     <div className='w-full'>
       <div className='relative w-[80%] m-auto'>
-          <AiOutlineSearch className='absolute left-2 top-3 md:left-4  size-5 text-white-1' />
+          <AiOutlineSearch className='absolute left-2 top-3 md:left-4 size-5 text-white-1' />
           <Input
           className='pl-9  md:pl-12 bg-black-1 border-none border-0 focus-visible:ring-offset-0 ring-0 focus:ring-0 focus-visible:ring-0 w-full text-white-1'
           placeholder='Search for podcasts'

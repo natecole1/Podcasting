@@ -1,8 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { PodcastGenreType } from "@/src/types";
 
-export interface PodcastGenreType {
-    value: string;
-}
 
 const initialState: PodcastGenreType = {
     value: ''

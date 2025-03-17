@@ -18,6 +18,7 @@ const NoteworthyTopTenPodcastsDetail = () => {
     (p) => p.uuid === params.podcastId
   );
 
+
   if (!podcast) {
     notFound();
   }
@@ -30,7 +31,7 @@ const NoteworthyTopTenPodcastsDetail = () => {
         imageUrl={podcast.imageUrl}
         bgImage={"url(/assets/background_pattern3.png)"}
       />
-      <PodcastPlayEpisodes episodes={podcast.episodes} />
+      <PodcastPlayEpisodes episodes={podcast.episodes} name={podcast?.name} imageUrl={podcast?.imageUrl}/>
     </div>
   );
 };

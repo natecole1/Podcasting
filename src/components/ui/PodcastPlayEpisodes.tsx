@@ -14,14 +14,20 @@ import Waveform from "./Waveform";
 import EpisodeDetails from "./EpisodeDetails";
 import PlayPauseButton from "./PlayPauseButton";
 import { PodcastEpisodesProps } from "@/src/types";
+import { MdDataSaverOn } from "react-icons/md"
+import { addPodcastToLibrary } from "@/src/lib/features/podcastLibrary/podcastLibrarySlice";
+import { useToast } from "@/components/ui/use-toast";
 
 
-const PodcastPlayEpisodes = ({episodes}: PodcastEpisodesProps) => {
+const PodcastPlayEpisodes = ({episodes, name, imageUrl}: PodcastEpisodesProps) => {
   const isPlaying = useSelector((state: RootState) => state.isPlaying.value);
+ 
+
   const isAudioPlayerDisplayed = useSelector(
     (state: RootState) => state.isAudioPlayerDisplayed.value
   );
   const dispatch = useDispatch();
+  const { toast } = useToast();
 
   const [podcastEpisodeId, setPodcastEpisodeId] = useState(0);
 
@@ -54,8 +60,24 @@ const PodcastPlayEpisodes = ({episodes}: PodcastEpisodesProps) => {
       dispatch(toggleIsPlaying());
       dispatch(closeAudioPlayer());
     }
-    dispatch(closeAudioPlayer());
+    dispatch(closeAudioPlayer()); 
   };
+
+  const handleSaveToLibrary = (id: string, title:string, name:string, imageUrl:string, audioUrl:string) => {
+    dispatch(addPodcastToLibrary({
+      id:id,
+      title:title,
+      podcastName:name,
+      imageUrl:imageUrl,
+      audioUrl:audioUrl
+    } ));
+    toast({
+      variant: "success",
+      description: "You've add the podcast to your library!",
+    });
+  }
+
+  
 
   return (
     <div className="w-full h-100vh bg-black-3 px-8 pt-8 pb-40 xl:px-60">
@@ -82,8 +104,17 @@ const PodcastPlayEpisodes = ({episodes}: PodcastEpisodesProps) => {
                     name={episode.name}
                     description={episode.description}
                   />
-                  <div className="w-12 h-6">
-                    {isPlaying && podcastEpisodeId === id && <Waveform />}
+                  <div className="flex gap-4 items-center">
+                    <div className="w-12">
+                      <MdDataSaverOn  
+                        className="text-gold-1 w-8 h-8 hover:scale-105 cursor-pointer"
+                        onClick={() => handleSaveToLibrary(episode.uuid, episode.name, name, imageUrl, episode.audioUrl)}
+                      
+                      />
+                    </div>
+                    <div className="w-12 h-6">
+                      {isPlaying && podcastEpisodeId === id && <Waveform />}
+                    </div>
                   </div>
                 </div>
               </div>

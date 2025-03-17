@@ -30,7 +30,11 @@ const page = () => {
         imageUrl={podcast?.imageUrl}
         bgImage={"url(/assets/background_pattern4.png)"}
       />
-      <PodcastPlayEpisodes episodes={podcast?.episodes} />
+      <PodcastPlayEpisodes 
+        episodes={podcast?.episodes} 
+        name={podcast.name}
+        imageUrl={podcast.imageUrl} 
+       />
     </div>
   )
 }
