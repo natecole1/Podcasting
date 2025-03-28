@@ -21,17 +21,17 @@ const Browse = () => {
    
   }
 
-  // grid md:grid-cols-3 xl:grid-cols-4 place-content-center gap-x-6 gap-y-6 mt-8 xl:mt-12
 
   return (
     <div className="w-full">
+      <h1 className="font-bold text-gold-1 text-20">Browse Podcasts by Category</h1>;
       <div className="w-full grid md:grid-cols-3 xl:grid-cols-4 place-content-center gap-x-6 gap-y-6 mt-8 xl:mt-12">
         {browseCategoriesOptions.map((category) => {
           return (
             <div key={category.genre} className="w-48  ">
               <Link href={`/browse/browse-podcasts/${genre}`}>
                 <BrowseCategoryCard
-                  genre={category.genre}
+                  displayGenre={category.displayGenre}
                   color={category.color}
                   onClick={() => handleClick(category.genre)}
                 />

@@ -1,7 +1,7 @@
 import React from 'react'
 import { BrowseCategoryCardProps } from '@/src/types';
 
-const BrowseCategoryCard = ({genre, color, onClick}: BrowseCategoryCardProps) => {
+const BrowseCategoryCard = ({ displayGenre, color, onClick}: BrowseCategoryCardProps) => {
   return (
     <div>
       <div
@@ -11,7 +11,7 @@ const BrowseCategoryCard = ({genre, color, onClick}: BrowseCategoryCardProps) =>
           backgroundColor: color
         }}
       >
-        <h2 className="text-md font-bold">{genre}</h2>
+        <h2 className="text-md font-bold">{displayGenre}</h2>
       </div>
     </div>
   );

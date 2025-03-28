@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 
 import AudioPlayer from "./AudioPlayer";
@@ -13,13 +14,13 @@ import CloseButton from "./CloseButton";
 import Waveform from "./Waveform";
 import EpisodeDetails from "./EpisodeDetails";
 import PlayPauseButton from "./PlayPauseButton";
-import { PodcastPlayEpisodesProps } from "@/src/types";
+import { UserPodcastPlayEpisodesProps } from "@/src/types";
 import { MdDataSaverOn } from "react-icons/md"
 import { addPodcastToLibrary } from "@/src/lib/features/podcastLibrary/podcastLibrarySlice";
 import { useToast } from "@/components/ui/use-toast";
 
 
-const PodcastPlayEpisodes = ({episodes, name, imageUrl}: PodcastPlayEpisodesProps) => {
+const UserPodcastPlayEpisodes = ({episodes, name, imageUrl}: UserPodcastPlayEpisodesProps) => {
   const isPlaying = useSelector((state: RootState) => state.isPlaying.value);
  
 
@@ -39,9 +40,9 @@ const PodcastPlayEpisodes = ({episodes, name, imageUrl}: PodcastPlayEpisodesProp
 
   const handleNextClick = () => {
     if (isPlaying) {
-      setPodcastEpisodeId((prev) => (prev < 9 ? prev + 1 : prev));
+      setPodcastEpisodeId((prev) => (prev < episodes!.length ? prev + 1 : prev));
     } else {
-      setPodcastEpisodeId((prev) => (prev < 9 ? prev + 1 : prev));
+      setPodcastEpisodeId((prev) => (prev < episodes!.length ? prev + 1 : prev));
       dispatch(toggleIsPlaying());
     }
   };
@@ -87,7 +88,7 @@ const PodcastPlayEpisodes = ({episodes, name, imageUrl}: PodcastPlayEpisodesProp
       <div className="">
         {episodes?.map((episode, id) => {
           return (
-            <div className="text-white-1 " key={episode.name}>
+            <div className="text-white-1 " key={episode.podcastEpisodeTitle}>
               <div className="w-full xl:w-[80%] bg-white-2 h-[1px] opacity-10 my-5 m-auto" />
               <div className="w-full flex items-center justify-start xl:justify-center gap-6">
                 <div>
@@ -101,15 +102,22 @@ const PodcastPlayEpisodes = ({episodes, name, imageUrl}: PodcastPlayEpisodesProp
 
                 <div className="w-[80%] flex flex-col gap-4">
                   <EpisodeDetails
-                    name={episode.name}
-                    description={episode.description}
+                    name={episode.podcastEpisodeTitle}
+                    description={episode.podcastEpisodeDescription}
                   />
                   <div className="flex gap-4 items-center">
                     <div className="w-12">
-                      <MdDataSaverOn  
+                      <MdDataSaverOn
                         className="text-gold-1 w-8 h-8 hover:scale-105 cursor-pointer"
-                        onClick={() => handleSaveToLibrary(episode.uuid, episode.name, name, imageUrl, episode.audioUrl)}
-                      
+                        onClick={() =>
+                          handleSaveToLibrary(
+                            episode._id,
+                            episode.podcastEpisodeTitle,
+                            name,
+                            imageUrl!,
+                            episode.audioUrl
+                          )
+                        }
                       />
                     </div>
                     <div className="w-12 h-6">
@@ -121,13 +129,12 @@ const PodcastPlayEpisodes = ({episodes, name, imageUrl}: PodcastPlayEpisodesProp
             </div>
           );
         })}
-        
       </div>
       {isAudioPlayerDisplayed && (
         <div className="fixed bottom-0 right-0 left-0 bg-[#000]/[0.8] w-full z-10 -translate-y-1 duration-500 ease-in">
           <CloseButton onClick={handleAudioPlayerClose} />
           <AudioPlayer
-            audioUrl={episodes[podcastEpisodeId].audioUrl}
+            audioUrl={episodes![podcastEpisodeId].audioUrl}
             handlePrevClick={handlePrevClick}
             handleNextClick={handleNextClick}
           />
@@ -137,4 +144,4 @@ const PodcastPlayEpisodes = ({episodes, name, imageUrl}: PodcastPlayEpisodesProp
   );
 };
 
-export default PodcastPlayEpisodes;
+export default UserPodcastPlayEpisodes;

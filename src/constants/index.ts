@@ -1,3 +1,4 @@
+
 export const sidebarLinks = [
   {
     label: "Home",
@@ -19,6 +20,11 @@ export const sidebarLinks = [
     route: "/create-podcast",
     imgURL: "/assets/microphone.svg",
   },
+  {
+    label: "View Podcast",
+    route: "/view-podcast",
+    imgURL: "/assets/eye_icon.png"
+  }
 ];
 
 export const podcastData = [
@@ -91,76 +97,91 @@ export const browseCategoriesOptions = [
   {
     id: 1,
     genre: "Arts",
+    displayGenre: "Arts",
     color: "#e9502f",
   },
   {
     id: 2,
     genre: "Business",
+    displayGenre: "Business",
     color: "#2fd7e9",
   },
   {
     id: 3,
     genre: "Business_investing",
+    displayGenre: "Business Investing",
     color: "#dd2fe9",
   },
   {
     id: 4,
     genre: "Comedy",
+    displayGenre: "Comedy",
     color: "#df2a4d",
   },
   {
     id: 5,
     genre: "comedy_stand_up",
+    displayGenre: "Comedy Stand Up",
     color: "#2adf71",
   },
   {
     id: 6,
     genre: "Education",
+    displayGenre: "Education",
     color: "#2a42df",
   },
   {
     id: 7,
     genre: "Government",
+    displayGenre: "Government",
     color: "#07e541",
   },
   {
     id: 8,
     genre: "Fiction",
+    displayGenre: "Fiction",
     color: "#2adf71",
   },
   {
     id: 9,
     genre: "History",
+    displayGenre: "History",
     color: "#dd2fe9",
   },
   {
     id: 10,
-    genre: "News",
+    genre: "Music",
+    displayGenre: "Music",
     color: "#2fd7e9",
   },
   {
     id: 11,
-    genre: "Religion_spirituality",
+    genre: "News",
+    displayGenre: "News",
     color: "#df2a4d",
   },
   {
     id: 12,
     genre: "Science",
+    displayGenre: "Science",
     color: "#07e541",
   },
   {
     id: 13,
     genre: "Sports",
+    displayGenre: "Sports",
     color: "#e9502f",
   },
   {
     id: 14,
     genre: "Technology",
+    displayGenre: "Technology",
     color: "#2fd7e9",
   },
   {
     id: 15,
     genre: "True_crime",
+    displayGenre: "True Crime",
     color: "#2adf71",
   },
 ];

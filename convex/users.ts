@@ -70,34 +70,34 @@ export const deleteUser = internalMutation({
   },
 });
 
-export const getTopUserByPodcastCount = query({
-  args: {},
-  handler: async (ctx, args) => {
-    const user = await ctx.db.query("users").collect();
+// export const getTopUserByPodcastCount = query({
+//   args: {},
+//   handler: async (ctx, args) => {
+//     const user = await ctx.db.query("users").collect();
 
-    const userData = await Promise.all(
-      user.map(async (u) => {
-        const podcasts = await ctx.db
-          .query("podcasts")
-          .filter((q) => q.eq(q.field("authorId"), u.clerkId))
-          .collect();
+//     const userData = await Promise.all(
+//       user.map(async (u) => {
+//         const podcasts = await ctx.db
+//           .query("podcasts")
+//           .filter((q) => q.eq(q.field("authorId"), u.clerkId))
+//           .collect();
 
-        const sortedPodcasts = podcasts.sort((a, b) => b.views - a.views);
+//         const sortedPodcasts = podcasts.sort((a, b) => b.views - a.views);
 
-        return {
-          ...u,
-          totalPodcasts: podcasts.length,
-          podcast: sortedPodcasts.map((p) => ({
-            podcastTitle: p.podcastTitle,
-            podcastId: p._id,
-          })),
-        };
-      })
-    );
+//         return {
+//           ...u,
+//           totalPodcasts: podcasts.length,
+//           podcast: sortedPodcasts.map((p) => ({
+//             podcastTitle: p.podcastTitle,
+//             podcastId: p._id,
+//           })),
+//         };
+//       })
+//     );
 
-    return userData.sort((a, b) => b.totalPodcasts - a.totalPodcasts);
-  },
-});
+//     return userData.sort((a, b) => b.totalPodcasts - a.totalPodcasts);
+//   },
+// });
 
 export const getUserById = query({
   args: { clerkId: v.string() },

@@ -1,5 +1,7 @@
 import { Id } from "@/convex/_generated/dataModel";
-import { Dispatch, SetStateAction, ReactNode } from "react";
+import { Dispatch, SetStateAction, ReactNode, MutableRefObject } from "react";
+import { number } from "zod";
+
 
 export interface GenerateThumbnailProps {
   image: string;
@@ -341,7 +343,7 @@ export type PodcastSeriesDetailType = {
     }
 }
 
-export type PodcastEpisodesProps = {
+export type PodcastPlayEpisodesProps = {
   name: string;
   imageUrl: string;
   episodes: [
@@ -423,7 +425,8 @@ export type TopPodcastsByGenresType = {
 }
 
 export type BrowseCategoryCardProps = {
-  genre: string;
+
+  displayGenre: string
   color: string;
   onClick: () => void;
 }
@@ -452,3 +455,73 @@ export type SavedLibraryPodcastProps = {
   podcastEpisodeId: number;
   id: number;
 }
+
+export interface Controls {
+    audioRef: MutableRefObject<HTMLAudioElement | null>;
+    isRecordingInProgress: boolean;
+    isPausedRecording: boolean;
+    audioData: Uint8Array;
+    recordingTime: number;
+    mediaRecorder: MediaRecorder | null;
+    duration: number;
+    currentAudioTime: number;
+    audioSrc: string;
+    isPausedRecordedAudio: boolean;
+    isProcessingRecordedAudio: boolean;
+    isCleared: boolean;
+    isAvailableRecordedAudio: boolean;
+    recordedBlob: Blob | null;
+    bufferFromRecordedBlob: AudioBuffer | null;
+    formattedDuration: string;
+    formattedRecordingTime: string;
+    formattedRecordedAudioCurrentTime: string;
+    startRecording: () => void;
+    togglePauseResume: () => void;
+    startAudioPlayback: () => void;
+    stopAudioPlayback: () => void;
+    stopRecording: () => void;
+    saveAudioFile: () => void;
+    clearCanvas: () => void;
+    setCurrentAudioTime: Dispatch<SetStateAction<number>>;
+    error: Error | null;
+    isProcessingOnResize: boolean;
+    isProcessingStartRecording: boolean;
+    isPreloadedBlob: boolean;
+    setPreloadedAudioBlob: (blob: Blob) => void;
+    _setIsProcessingAudioOnComplete: Dispatch<SetStateAction<boolean>>;
+    _setIsProcessingOnResize: Dispatch<SetStateAction<boolean>>;
+}
+
+export type RecordPodcastProps = {
+  recorderControls: Controls,
+  isRecordingInProgress: boolean,
+  formattedRecordingTime: string,
+  isAvailableRecordedAudio: boolean,
+  isSubmitting: boolean,
+}
+
+export type UserPodcastPlayHeaderProps = {
+  name: string;
+  description: string;
+  imageUrl: string | undefined;
+  bgImage: string;
+};
+
+export type UserPodcastPlayEpisodesProps = {
+  name: string;
+  imageUrl: string | undefined;
+  episodes: 
+     {
+        _id: Id<"episodes">;
+        _creationTime: number;
+        audioStorageId?: Id<"_storage"> | undefined;
+        user: Id<"users">;
+        author: string;
+        authorId: string;
+        authorImageUrl: string;
+        podcastEpisodeTitle: string;
+        podcastEpisodeDescription: string;
+        audioUrl: string;
+      }[] | undefined,
+  
+};

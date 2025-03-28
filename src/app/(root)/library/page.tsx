@@ -94,7 +94,7 @@ const Library = () => {
             />
           </div>
           <div>
-            <h1 className="text-gold-1 font-extrabold text-md lg:text-xl xl:my-4">
+            <h1 className="font-bold text-gold-1 text-20 xl:my-4">
               Listen to Your Saved Podcasts
             </h1>
           </div>

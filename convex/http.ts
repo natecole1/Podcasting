@@ -1,13 +1,14 @@
 import { httpRouter } from "convex/server";
 import { httpAction } from "./_generated/server";
 import { internal } from "./_generated/api";
-import type { WebhookEvent } from "@clerk/backend";
+import { WebhookEvent } from "@clerk/nextjs/server";
 import { Webhook } from "svix";
+import { headers } from "next/headers";
 
 const handleClerkWebhook = httpAction(async (ctx, request) => {
   const event = await validateRequest(request);
   if (!event) {
-    return new Response("Error occured", {
+    return new Response("Error occurred", {
       status: 400,
     });
   }
@@ -17,7 +18,7 @@ const handleClerkWebhook = httpAction(async (ctx, request) => {
         clerkId: event.data.id,
         email: event.data.email_addresses[0].email_address,
         imageUrl: event.data.image_url,
-        name: event.data.first_name!,
+        name: event.data.username!,
       });
       break;
     case "user.updated":
@@ -39,36 +40,65 @@ const handleClerkWebhook = httpAction(async (ctx, request) => {
 });
 
 const http = httpRouter();
+
 http.route({
   path: "/clerk-users-webhook",
   method: "POST",
   handler: handleClerkWebhook,
 });
 
-async function validateRequest(
+ async function validateRequest(
   req: Request
-): Promise<WebhookEvent | undefined> {
-  const webhookSecret = process.env.CLERK_WEBHOOK_SECRET;
+) {
+  const webhookSecret = process.env.SIGNING_SECRET;
   if (!webhookSecret) {
-    throw new Error("CLERK_WEBHOOK_SECRET is not defined");
+    throw new Error("SIGNING_SECRET is not defined");
   }
 
-  const payloadString = await req.text();
-  const svixHeaders = {
-    "svix-id": req.headers.get("svix-id")!,
-    "svix-timestamp": req.headers.get("svix-timestamp")!,
-    "svix-signature": req.headers.get("svix-signature")!,
-  };
-  const wh = new Webhook(webhookSecret);
-  let evt: Event | null = null;
-  try {
-    evt = wh.verify(payloadString, svixHeaders) as Event;
-  } catch (_) {
-    console.log("error verifying");
-    return;
-  }
 
-  return evt as unknown as WebhookEvent;
+
+ const payloadString = await req.text();
+ const headerPayload = req.headers;
+ const svixHeaders = {
+   "svix-id": headerPayload.get("svix-id")!,
+   "svix-timestamp": headerPayload.get("svix-timestamp")!,
+   "svix-signature": headerPayload.get("svix-signature")!,
+ };
+ const wh = new Webhook(webhookSecret);
+ const event = wh.verify(payloadString, svixHeaders);
+ return event as unknown as WebhookEvent;
+  
+
+  // const headerPayload = headers();
+  // const svix_id = headerPayload.get('svix-id');
+  // const svix_timestamp = headerPayload.get('svix-timestamp');
+  // const svix_signature = headerPayload.get('svix-signature')
+  
+  // if (!svix_id || !svix_timestamp || !svix_signature) {
+  //   return new Response("Error: Missing Svix headers", {
+  //     status: 400,
+  //   });
+  // }
+  
+  // const payload = await req.json();
+  // const body = JSON.stringify(payload);
+  
+  // let evt: WebhookEvent;
+
+  // try {
+  //   evt = wh.verify(body, {
+  //     'svix-id': svix_id,
+  //     'svix-timestamp': svix_timestamp,
+  //     'svix-signature': svix_signature,
+  //   }) as WebhookEvent;
+  // } catch (err) {
+  //   console.error("Error: Could not verify webhook:", err);
+  //   return new Response('Error: Verification error', {
+  //     status: 400,
+  //   });
+  // }
+
+  // return evt as unknown as WebhookEvent;
 }
 
 export default http;
