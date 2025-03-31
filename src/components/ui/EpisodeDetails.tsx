@@ -15,7 +15,9 @@ const EpisodeDetails = ({name, description}: EpisodeDetailsProps) => {
        textToClick='View more'
        title={name}
       >
-        {description}
+        <div className='border-gold-1 border-solid border-2 p-2'>
+          {description}
+        </div>
       </Modal>
     </div>
   );

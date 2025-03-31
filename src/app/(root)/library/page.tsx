@@ -72,7 +72,7 @@ const Library = () => {
     },[value])
    
   return (
-    <div className="w-full h-screen rounded-3xl">
+    <div className="w-full">
       {podcastLibrary.length === 0 ? (
         <div className="w-full mt-32 ">
           <div className="w-full bg-black-2 p-10 rounded-3xl flex flex-col items-center justify-center gap-4 lg:p-20">
@@ -82,7 +82,7 @@ const Library = () => {
           </div>
         </div>
       ) : (
-        <div className="flex flex-col gap-10 lg:gap-2">
+        <div className="w-full flex flex-col gap-10 lg:gap-2">
           <div className="relative w-[80%] max-w-[500px] m-auto">
             <AiOutlineSearch className="absolute left-2 top-3 md:left-4 size-5 text-white-1" />
             <Input
@@ -98,7 +98,7 @@ const Library = () => {
               Listen to Your Saved Podcasts
             </h1>
           </div>
-          <div className="w-full flex flex-col ">
+          <div className="w-full h-full flex flex-col ">
             {filteredPodcastLibrary.map((podcast, id) => {
               return (
                 <div>

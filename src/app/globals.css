@@ -198,12 +198,12 @@ input[type='range']::-webkit-slider-thumb {
 } */
 
 /* dragging thumb - chrome and safari */
-/* input[type='range']:active::-webkit-slider-thumb {
+input[type='range']:active::-webkit-slider-thumb {
   transform: scale(1.2);
   background-color: #DCCA87;
   height: 8px;
   width: 8px;
-} */
+}
 
 /* slider thumb - firefox */
 input[type='range']::-moz-range-thumb {
