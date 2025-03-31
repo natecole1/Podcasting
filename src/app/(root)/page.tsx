@@ -1,5 +1,5 @@
 'use client'
-import { useRef } from 'react';
+import { useRef, useEffect, useState } from 'react';
 
 import BrowseSection from "@/src/components/ui/BrowseSection";
 import CreateSection from "@/src/components/ui/CreateSection";
@@ -12,13 +12,31 @@ import ListenToPodcastSection from "@/src/components/ui/ListenToPodcastSection";
 import Navbar from "@/src/components/ui/Navbar";
 import VideoBackground from "@/src/components/ui/VideoBackground";
 import SmoothScroll from "@/src/components/ui/SmoothScroll";
+import SplashScreen from '@/src/components/ui/SplashScreen';
+import { AnimatePresence } from 'motion/react';
+
 
 
 const Home = () => {
+  const [isLoading, setIsLoading ] = useState(true);
+
+  useEffect(() => {
+    const loadPage = () => {
+      setTimeout(() => {
+        setIsLoading(false);
+        window.scrollTo(0,0);
+      }, 3000)
+    }
+
+    loadPage();
+  }, []);
  
   return (
     <>
       <SmoothScroll>
+        <AnimatePresence mode='wait'>
+          {isLoading && <SplashScreen />}
+        </AnimatePresence>
         <div className="relative">
           <VideoBackground />
           <Navbar />

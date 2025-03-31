@@ -11,6 +11,8 @@ import { AudioPlayerProps } from '@/src/types'
 import { useSelector, useDispatch } from "react-redux";
 import { toggleIsPlaying } from "@/src/lib/features/play/playSlice";
 import type { RootState } from "@/src/lib/store";
+import { Slider, SliderRange, SliderTrack, SliderThumb } from '@/components/ui/slider'
+import { cn } from '@/src/lib/utils'
 
 const AudioPlayer = ({ audioUrl, handlePrevClick, handleNextClick }: AudioPlayerProps) => {
 
@@ -95,6 +97,7 @@ const AudioPlayer = ({ audioUrl, handlePrevClick, handleNextClick }: AudioPlayer
 
     const handlePlayPause = () => {
         dispatch(toggleIsPlaying());
+
     }
     
     const handleProgressChange = () => {
@@ -205,7 +208,7 @@ const AudioPlayer = ({ audioUrl, handlePrevClick, handleNextClick }: AudioPlayer
               <div className="z-50 flex items-center">
                 <input
                   type="range"
-                  className=""
+                  className="cursor-pointer"
                   value={volume}
                   min={0}
                   max={100}

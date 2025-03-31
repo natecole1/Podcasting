@@ -1,12 +1,15 @@
+'use client'
 import Link from "next/link";
 import { Button } from "./button";
 import { motion } from "motion/react";
 import Image from "next/image";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 import { useScroll, useTransform } from 'motion/react';
 
 const DiscoverSection = () => {
+  const [isLoading, setIsLoading ] = useState(false);
+  
    const containerRef = useRef(null);
    const { scrollYProgress } = useScroll({
      target: containerRef,
@@ -44,11 +47,15 @@ const DiscoverSection = () => {
             latest content.
           </p>
 
-          <Link href="/sign-up" passHref legacyBehavior>
-            <Button className="bg-gold-1 w-[33%] m-auto rounded-3xl duration-300 active:scale-90">
-              Discover
-            </Button>
-          </Link>
+          <Button
+            asChild
+            className=" bg-gold-1 w-44 rounded-3xl mt-5 m-auto duration-300 active:scale-90"
+            variant={"outline"}
+            onClick={() => setIsLoading(true)}
+            disabled={isLoading}
+          >
+            <Link href="/sign-up">Discover</Link>
+          </Button>
         </div>
       </div>
     </div>

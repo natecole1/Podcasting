@@ -1,16 +1,23 @@
 import Image from "next/image";
 import { Button } from "./button";
 import Link from "next/link";
+import { useState } from "react";
 
 const CTASection = () => {
+  const [isLoading, setIsLoading ] = useState(false);
+
   return (
     <div className="w-full h-auto relative">
       <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center">
-        <Link href="/sign-up" passHref legacyBehavior>
-          <Button className="bg-black-1 hover:bg-black-6 hover:text-white-2 text-gold-1 w-[120px] rounded-3xl mt-8 p-4 animate-smallPing hover:animate-none active:scale-90">
-            Get Started
-          </Button>
-        </Link>
+        <Button
+          asChild
+          className="border-black-7 w-44 rounded-3xl mt-5 duration-300 active:scale-90"
+          variant={"outline"}
+          onClick={() => setIsLoading(true)}
+          disabled={isLoading}
+        >
+          <Link href="/sign-up">Get Started</Link>
+        </Button>
       </div>
       <Image
         src="/assets/podcastPicSix.svg"

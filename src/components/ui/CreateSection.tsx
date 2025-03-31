@@ -1,9 +1,12 @@
+'use client'
 import Link from "next/link";
 import { Button } from "./button";
 import Image from "next/image";
+import { useState } from "react";
 
 
 const CreateSection = () => {
+  const [isLoading, setIsLoading ] = useState(false);
   return (
     <div className="flex w-full bg-black-1 p-4">
       <div className="flex flex-col justify-start w-full sm:w-[50%] px-2">
@@ -19,11 +22,15 @@ const CreateSection = () => {
             tool to help streamline your content creation process.
           </p>
 
-          <Link href="/sign-up" passHref legacyBehavior>
-            <Button className="bg-gold-1 w-[33%] rounded-3xl m-auto duration-300 active:scale-90">
-              Begin
-            </Button>
-          </Link>
+          <Button
+            asChild
+            className=" bg-gold-1 w-44 rounded-3xl mt-5 m-auto duration-300 active:scale-90"
+            variant={"outline"}
+            onClick={() => setIsLoading(true)}
+            disabled={isLoading}
+          >
+            <Link href="/sign-up">Begin</Link>
+          </Button>
         </div>
       </div>
       <div className="w-[50%] hidden sm:flex relative rounded-xl overflow-hidden">

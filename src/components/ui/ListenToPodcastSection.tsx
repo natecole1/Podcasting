@@ -26,10 +26,11 @@ const ListenToPodcastSection = () => {
           Topics as varied as sports, crime thrillers, documentaries and many
           more, are waiting for you to discover.
         </p>
-        <Link href="/sign-up">
-          <p className="hidden xl:flex text-blue-700 text-4xl font-extrabold ">
-            SIGN UP TODAY
-          </p>
+        <Link
+          href="/sign-up"
+          className="hidden xl:flex text-blue-700 text-4xl font-extrabold "
+        >
+          SIGN UP TODAY
         </Link>
       </motion.div>
     </div>
