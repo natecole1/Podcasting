@@ -17,7 +17,7 @@ const Navbar = () => {
         <div className="hidden sm:flex gap-4 m-3">
           <Button
             asChild
-            className=" bg-gold-1 w-44 rounded-3xl mt-5 duration-300 active:scale-90"
+            className=" bg-gold-1 w-44 rounded-3xl mt-5 transition-transform duration-500 active:scale-90"
             variant={"outline"}
             onClick={() => setIsLoading(true)}
             disabled={isLoading}
@@ -27,7 +27,7 @@ const Navbar = () => {
 
           <Button
             asChild
-            className=" w-44 text-white-1 rounded-3xl mt-5 duration-300 active:scale-90 hover:bg-black-1"
+            className=" w-44 text-white-1 rounded-3xl mt-5 transition-transform duration-500 active:scale-90 hover:bg-black-1"
             variant={"outline"}
             onClick={() => setIsLoading(true)}
             disabled={isLoading}

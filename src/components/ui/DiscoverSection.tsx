@@ -49,7 +49,7 @@ const DiscoverSection = () => {
 
           <Button
             asChild
-            className=" bg-gold-1 w-44 rounded-3xl mt-5 m-auto duration-300 active:scale-90"
+            className=" bg-gold-1 w-44 rounded-3xl mt-5 m-auto transition-transform duration-500 active:scale-90"
             variant={"outline"}
             onClick={() => setIsLoading(true)}
             disabled={isLoading}
