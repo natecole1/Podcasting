@@ -11,7 +11,7 @@ const CTASection = () => {
       <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center">
         <Button
           asChild
-          className="border-black-7 w-44 rounded-3xl mt-5 duration-300 active:scale-90"
+          className="border-black-7 hover:bg-gold-1 w-44 rounded-3xl mt-5 duration-300 active:scale-90"
           variant={"outline"}
           onClick={() => setIsLoading(true)}
           disabled={isLoading}

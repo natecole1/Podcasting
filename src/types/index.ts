@@ -525,3 +525,25 @@ export type UserPodcastPlayEpisodesProps = {
       }[] | undefined,
   
 };
+
+export type PodcastSearchResultType = {
+  search: {
+    searchId: string;
+    podcastSeries: [
+      {
+        uuid: string;
+        name: string;
+        imageUrl: string;
+        description: string;
+        episodes: [
+          {
+            uuid: string;
+            name: string;
+            description: string;
+            audioUrl: string;
+          },
+        ];
+      },
+    ];
+  };
+};

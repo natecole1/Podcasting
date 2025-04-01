@@ -1,10 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { apiSlice } from "./features/api/apiSlice";
-import { setupListeners } from "@reduxjs/toolkit/query";
-import playReducer from './features/play/playSlice'
-import displayAudioPlayerReducer from './features/displayAudioPlayer/displayAudioPlayerSlice'
-import podcastGenreReducer from './features/podcastGenre/podcastGenreSlice'
-import podcastLibraryReducer from './features/podcastLibrary/podcastLibrarySlice'
+
+import playReducer from './features/play/playSlice';
+import displayAudioPlayerReducer from './features/displayAudioPlayer/displayAudioPlayerSlice';
+import podcastGenreReducer from './features/podcastGenre/podcastGenreSlice';
+import podcastLibraryReducer from './features/podcastLibrary/podcastLibrarySlice';
+import podcastSearchInputReducer from './features/podcastSearchInput/podcastSearchInputSlice';
 
 
 export const makeStore = () => {
@@ -15,6 +16,7 @@ export const makeStore = () => {
             isAudioPlayerDisplayed: displayAudioPlayerReducer,
             podcastGenre: podcastGenreReducer,
             podcastLibrary: podcastLibraryReducer,
+            podcastSearch: podcastSearchInputReducer,
         },
         middleware: (getDefaultMiddleware) => getDefaultMiddleware({
             serializableCheck: false

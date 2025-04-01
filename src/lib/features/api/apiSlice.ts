@@ -3,7 +3,7 @@ import { createApi } from '@reduxjs/toolkit/query/react';
 import { graphqlRequestBaseQuery } from '@rtk-query/graphql-request-base-query';
 import { gql } from 'graphql-request';
 
-import { TopPodcastsByGenresType, TopPodcastsDetailType } from '@/src/types';
+import { PodcastSearchResultType, TopPodcastsByGenresType, TopPodcastsDetailType } from '@/src/types';
 
 import { useSelector } from 'react-redux';
 import { RootState } from "@/src/lib/store";
@@ -141,6 +141,7 @@ export const apiSlice = createApi({
             getTopChartsByGenres(
               taddyType: PODCASTSERIES
               genres: PODCASTSERIES_${genre}
+              limitPerPage: 20
             ) {
               topChartsId
               podcastSeries {
@@ -160,9 +161,41 @@ export const apiSlice = createApi({
         `,
       }),
     }),
+    getPodcastSearchResults: builder.query<PodcastSearchResultType, string>({
+      query: (searchTerm) => ({
+        document: gql`
+          {
+            search(
+              term: "${searchTerm}"
+              filterForTypes: [PODCASTSERIES, PODCASTEPISODE]
+            ) {
+              searchId
+              podcastSeries {
+                uuid
+                name
+                imageUrl
+                description(shouldStripHtmlTags: true)
+                episodes {
+                  uuid
+                  name
+                  description(shouldStripHtmlTags: true)
+                  audioUrl
+                }
+              }
+              podcastEpisodes {
+                uuid
+                name
+                description(shouldStripHtmlTags: true)
+                audioUrl
+              }
+            }
+          }
+        `,
+      }),
+    }),
   }),
 });
 
-export const { useGetNoteworthyPodcastsDetailsQuery, useGetTopPodcastsByGenresQuery, useGetTopTechPodcastsDetailsQuery, useGetTopTenPodcastsDetailsQuery } = apiSlice;
+export const { useGetNoteworthyPodcastsDetailsQuery,useGetPodcastSearchResultsQuery, useGetTopPodcastsByGenresQuery, useGetTopTechPodcastsDetailsQuery, useGetTopTenPodcastsDetailsQuery } = apiSlice;
 
 
