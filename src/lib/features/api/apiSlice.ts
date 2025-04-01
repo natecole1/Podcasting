@@ -168,6 +168,7 @@ export const apiSlice = createApi({
             search(
               term: "${searchTerm}"
               filterForTypes: [PODCASTSERIES, PODCASTEPISODE]
+              sortBy: POPULARITY
             ) {
               searchId
               podcastSeries {
