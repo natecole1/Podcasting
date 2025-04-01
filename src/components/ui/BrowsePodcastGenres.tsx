@@ -47,7 +47,7 @@ const BrowsePodcastGenres = () => {
         >
           <div className=" relative overflow-hidden">
             {podcasts?.getTopChartsByGenres.podcastSeries
-              .slice(0, 4)
+              .slice(0, 9)
               .map((podcast) => {
                 return (
                   <SwiperSlide key={podcast.uuid}>
@@ -72,7 +72,7 @@ const BrowsePodcastGenres = () => {
       )}
       <div className="w-full bg-white-2 h-[1px] opacity-10" />
       <div className='grid md:grid-cols-3'>
-        {podcasts?.getTopChartsByGenres.podcastSeries.slice(5).map((podcast) => {
+        {podcasts?.getTopChartsByGenres.podcastSeries.slice(10).map((podcast) => {
             return (
               <Link href={`/browse/browse-podcast/${genre}/${podcast.uuid}`}>
                 <div className="relative group flex flex-col justify-center items-center ">

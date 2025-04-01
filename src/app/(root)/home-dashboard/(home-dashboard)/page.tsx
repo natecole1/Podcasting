@@ -24,7 +24,7 @@ const page = () => {
       <Dialog>
         <DialogTrigger asChild>
           <Button className="w-full">
-            <Input className="w-full pl-5 bg-black-1 border-none" placeholder="Search for Podcasts" />
+            <Input className="w-full xl:w-4/5 m-auto pl-5 bg-black-1 border-none" placeholder="Search for Podcasts" />
           </Button>
         </DialogTrigger>
         <DialogContent className="text-white-1 bg-black-1 border-none w-3/4 h-1/2 p-4 overflow-auto no-scrollbar flex flex-col">

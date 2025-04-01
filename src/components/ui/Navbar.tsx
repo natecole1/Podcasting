@@ -14,7 +14,7 @@ const Navbar = () => {
         <div>
           <PodcastLogo />
         </div>
-        <div className="flex gap-4 m-3">
+        <div className="hidden sm:flex gap-4 m-3">
           <Button
             asChild
             className=" bg-gold-1 w-44 rounded-3xl mt-5 duration-300 active:scale-90"

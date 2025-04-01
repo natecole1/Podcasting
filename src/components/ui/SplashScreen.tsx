@@ -41,7 +41,7 @@ const SplashScreen = () => {
       {dimension.width > 0 && (
         <div className="w-full flex flex-col items-center justify-center">
           <motion.h1
-            className="text-gold-1 text-xl font-bold xl:text-2xl z-10"
+            className="text-gold-1 text-3xl font-bold xl:text-5xl z-10"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 3, ease: "easeInOut" }}

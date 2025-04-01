@@ -11,7 +11,7 @@ const BrowseCategoryCard = ({ displayGenre, color, onClick}: BrowseCategoryCardP
           backgroundColor: color
         }}
       >
-        <h2 className="text-md font-bold">{displayGenre}</h2>
+        <h2 className="text-md font-bold text-white-1">{displayGenre}</h2>
       </div>
     </div>
   );

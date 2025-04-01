@@ -26,7 +26,7 @@ const Searchbar = () => {
       <div className='relative w-[80%] m-auto'>
           <AiOutlineSearch className='absolute left-2 top-3 md:left-4 size-5 text-white-1' />
           <Input
-            className='pl-9 md:pl-12 bg-black-1 border-none border-0 focus-visible:ring-offset-0 ring-0 focus:ring-0 focus-visible:ring-0 w-full text-white-1'
+            className='pl-9 border-none bg-black-2 w-full text-white-1'
             placeholder='Search for podcasts'
             type='text'
             value={value}
@@ -44,7 +44,7 @@ const Searchbar = () => {
                         >
                           <div className="flex flex-col justify-center items-center ">
                             <img
-                              src={podcast.imageUrl}
+                              src={podcast.imageUrl === null ? '/assets/No-Image-Placeholder.png' : podcast.imageUrl}
                               alt="podcast image"
                               width={60}
                               height={60}

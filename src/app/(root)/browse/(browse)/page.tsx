@@ -29,7 +29,7 @@ const Browse = () => {
         {browseCategoriesOptions.map((category) => {
           return (
             <div key={category.genre} className="w-48  ">
-              <Link href={`/browse/browse-podcasts/${genre}`}>
+              <Link href={`/browse/browse-podcasts/${category.genre}`}>
                 <BrowseCategoryCard
                   displayGenre={category.displayGenre}
                   color={category.color}
