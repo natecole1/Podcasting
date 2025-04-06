@@ -21,9 +21,9 @@ import {
 const SavedLibraryPodcast = ({imageUrl, podcastName, podcastEpisodeTitle, onPlayClick, onDeleteClick, isPlaying, podcastEpisodeId, id}: SavedLibraryPodcastProps) => {
   
   return (
-    <div className="flex flex-col items-center justify-between w-full my-4">
-      <div className='w-full flex flex-col md:flex-row gap-2 md:gap-4'>
-        <div className="flex-center p-1">
+    <div className="flex flex-col  w-full my-4">
+      <div className='w-full flex flex-col md:flex-row md:justify-start gap-2 md:gap-4'>
+        <div className=" w-full sm:w-40 flex-center p-1">
           <Image
             src={imageUrl}
             alt="podcast image"
@@ -32,13 +32,13 @@ const SavedLibraryPodcast = ({imageUrl, podcastName, podcastEpisodeTitle, onPlay
             className="rounded-lg md:w-24 w-32"
           />
         </div>
-        <div className="flex flex-col text-center md:text-start">
+        <div className="w-full  flex flex-col text-center" >
           <div>
             <p className="text-white-1 font-extrabold">{podcastName}</p>
           </div>
         
-          <div>
-            <p className="text-white-2" >{podcastEpisodeTitle}</p>
+          <div className='w-full'>
+            <p className="text-white-2 text-ellipsis line-clamp-1 overflow-hidden" >{podcastEpisodeTitle}</p>
           </div>
         </div>
       </div>

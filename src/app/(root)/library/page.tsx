@@ -27,7 +27,7 @@ const Library = () => {
     );
 
    const isPlaying = useSelector((state: RootState) => state.isPlaying.value);
-   console.log(podcastLibrary);
+
 
    const dispatch = useDispatch();
 
@@ -65,6 +65,7 @@ const Library = () => {
 
     const handleDeletePodcastClick = (id: string) => {
       dispatch(removePodcastFromLibrary(id))
+      setFilteredPodcastLibrary(podcastLibrary.filter((podcast) => podcast.id !== id))
     };
 
     useEffect(() => {
@@ -102,7 +103,7 @@ const Library = () => {
             {filteredPodcastLibrary.map((podcast, id) => {
               return (
                 <div>
-                  <div key={podcast.id}>
+                  <div key={`${podcast.title}-${id}`}>
                     <SavedLibraryPodcast
                       imageUrl={podcast.imageUrl}
                       podcastName={podcast.podcastName}

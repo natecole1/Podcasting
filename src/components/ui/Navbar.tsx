@@ -27,7 +27,7 @@ const Navbar = () => {
 
           <Button
             asChild
-            className=" w-44 text-white-1 rounded-3xl mt-5 transition-transform duration-500 active:scale-90 hover:bg-black-1"
+            className=" w-44 text-blue-500 rounded-3xl mt-5 transition-transform duration-500 active:scale-90 hover:bg-black-1"
             variant={"outline"}
             onClick={() => setIsLoading(true)}
             disabled={isLoading}

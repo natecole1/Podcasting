@@ -38,11 +38,6 @@ const MobileMenu = () => {
         </div>
         <div className="flex justify-center items-center py-12">
           <nav className="flex flex-col text-lg gap-2">
-            {/* {sidebarLinks.map(({ imgURL, route, label }) => {
-              const isActive =
-                pathname === route || pathname.startsWith(`${route}/`);
-
-              return ( */}
                 <SheetClose  >
                  
                   <Link
@@ -136,8 +131,7 @@ const MobileMenu = () => {
                     </div>
                   </Link>
                 </SheetClose>
-              {/* );
-            })} */}
+            
           </nav>
         </div>
       </SheetContent>

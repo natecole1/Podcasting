@@ -11,8 +11,7 @@ import { AudioPlayerProps } from '@/src/types'
 import { useSelector, useDispatch } from "react-redux";
 import { toggleIsPlaying } from "@/src/lib/features/play/playSlice";
 import type { RootState } from "@/src/lib/store";
-import { Slider, SliderRange, SliderTrack, SliderThumb } from '@/components/ui/slider'
-import { cn } from '@/src/lib/utils'
+
 
 const AudioPlayer = ({ audioUrl, handlePrevClick, handleNextClick }: AudioPlayerProps) => {
 
@@ -52,7 +51,7 @@ const AudioPlayer = ({ audioUrl, handlePrevClick, handleNextClick }: AudioPlayer
       }
     }
 
-    const updateProgress = useCallback(() => {
+    const updateProgress = () => {
       if ( audioPlayerRef.current && progressBarRef.current) {
         const currentTime = audioPlayerRef.current?.currentTime;
         setCurrentTime(currentTime);
@@ -60,9 +59,20 @@ const AudioPlayer = ({ audioUrl, handlePrevClick, handleNextClick }: AudioPlayer
         progressBarRef.current.style.setProperty(
           '--range-progress',
           `${(currentTime / duration ) * 100}%`
-        )
-      }
-    },[ currentTime, audioPlayerRef, progressBarRef])
+        );
+
+      }  ;
+
+      
+    if (
+      audioPlayerRef.current?.currentTime === audioPlayerRef.current?.duration
+      && isPlaying === true
+    ) {
+      dispatch(toggleIsPlaying());
+      
+    }
+        
+    }
 
     const startAnimation = useCallback(() => {
       if (audioPlayerRef.current && progressBarRef.current) {
@@ -76,21 +86,23 @@ const AudioPlayer = ({ audioUrl, handlePrevClick, handleNextClick }: AudioPlayer
 
     useEffect(() => {
        if (isPlaying) {
-         audioPlayerRef.current?.play();
          startAnimation();
+         audioPlayerRef.current?.play();
        } else {
          audioPlayerRef.current?.pause();
          if (playAnimationRef.current !== null) {
            cancelAnimationFrame(playAnimationRef.current);
            playAnimationRef.current = null;
          }
+
          updateProgress();
        }
 
        return () => {
          if (playAnimationRef.current !== null) {
            cancelAnimationFrame(playAnimationRef.current);
-         }
+         };
+         
        };
 
     },[isPlaying, audioUrl])
@@ -102,14 +114,17 @@ const AudioPlayer = ({ audioUrl, handlePrevClick, handleNextClick }: AudioPlayer
     
     const handleProgressChange = () => {
   
-      if (audioPlayerRef.current && progressBarRef.current) {
-        const newTime = Number(progressBarRef.current.value);
+      if (audioPlayerRef.current && progressBarRef.current && isPlaying) {
+        let newTime = Number(progressBarRef.current.value);
         audioPlayerRef.current.currentTime = newTime;
         setCurrentTime(newTime);
         progressBarRef.current.style.setProperty(
           "--range-progress",
           `${(newTime / duration) * 100}%`
         );
+
+      
+      
       }
     }
    
