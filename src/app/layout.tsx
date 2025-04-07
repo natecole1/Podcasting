@@ -23,7 +23,7 @@ export default function RootLayout({
   return (
     <>
       <WebVitals />
-      <Root children={children} />
+      <Root>{children}</Root>
     </>
   );
 }

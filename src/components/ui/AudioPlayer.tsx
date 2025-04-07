@@ -51,7 +51,7 @@ const AudioPlayer = ({ audioUrl, handlePrevClick, handleNextClick }: AudioPlayer
       }
     }
 
-    const updateProgress = () => {
+    const updateProgress = useCallback(() => {
       if ( audioPlayerRef.current && progressBarRef.current) {
         const currentTime = audioPlayerRef.current?.currentTime;
         setCurrentTime(currentTime);
@@ -61,8 +61,8 @@ const AudioPlayer = ({ audioUrl, handlePrevClick, handleNextClick }: AudioPlayer
           `${(currentTime / duration ) * 100}%`
         );
 
-      }  ;
-
+      } ;
+    
       
     if (
       audioPlayerRef.current?.currentTime === audioPlayerRef.current?.duration
@@ -72,7 +72,7 @@ const AudioPlayer = ({ audioUrl, handlePrevClick, handleNextClick }: AudioPlayer
       
     }
         
-    }
+    },[audioPlayerRef, progressBarRef] )
 
     const startAnimation = useCallback(() => {
       if (audioPlayerRef.current && progressBarRef.current) {

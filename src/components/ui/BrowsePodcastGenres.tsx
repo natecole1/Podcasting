@@ -74,11 +74,11 @@ const BrowsePodcastGenres = () => {
       <div className='grid md:grid-cols-3'>
         {podcasts?.getTopChartsByGenres.podcastSeries.slice(10).map((podcast) => {
             return (
-              <Link href={`/browse/browse-podcast/${genre}/${podcast.uuid}`}>
-                <div
-                  key={podcast.uuid}
-                  className="relative group flex flex-col justify-center items-center "
-                >
+              <Link
+                key={podcast.uuid}
+                href={`/browse/browse-podcast/${genre}/${podcast.uuid}`}
+              >
+                <div className="relative group flex flex-col justify-center items-center ">
                   <PodcastCardLg
                     // host={podcast.itunesInfo.publisherName}
                     title={podcast.name}

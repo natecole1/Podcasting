@@ -102,8 +102,8 @@ const Library = () => {
           <div className="w-full h-full flex flex-col ">
             {filteredPodcastLibrary.map((podcast, id) => {
               return (
-                <div>
-                  <div key={`${podcast.title}-${id}`}>
+                <div key={`${podcast.title}-${id}`}>
+                  <div>
                     <SavedLibraryPodcast
                       imageUrl={podcast.imageUrl}
                       podcastName={podcast.podcastName}
