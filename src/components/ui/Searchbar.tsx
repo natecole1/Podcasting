@@ -43,7 +43,7 @@ const Searchbar = () => {
                           href={`/search-results/${podcast.uuid}`}
                         >
                           <div className="flex flex-col justify-center items-center ">
-                            <img
+                            <Image
                               src={podcast.imageUrl === null ? '/assets/No-Image-Placeholder.png' : podcast.imageUrl}
                               alt="podcast image"
                               width={60}

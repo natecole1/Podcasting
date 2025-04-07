@@ -8,11 +8,11 @@ import { notFound, useParams } from "next/navigation";
 import PodcastPlayHeader from "@/src/components/ui/PodcastPlayHeader";
 import PodcastPlayEpisodes from "@/src/components/ui/PodcastPlayEpisodes";
 
-const page = () => {
+const Page = () => {
   const params = useParams<{ podcastId: string }>();
   
   const genre = useSelector((state: RootState) => state.podcastGenre.value);
-  const {data: podcasts, isLoading} = useGetTopPodcastsByGenresQuery(genre);
+  const {data: podcasts} = useGetTopPodcastsByGenresQuery(genre);
 
   const podcast = podcasts?.getTopChartsByGenres.podcastSeries.find(
     (p) => p.uuid === params.podcastId
@@ -39,4 +39,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

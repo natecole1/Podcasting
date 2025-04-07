@@ -1,4 +1,4 @@
-
+'use client'
 import React from 'react'
 
 import { Mulish } from "next/font/google";

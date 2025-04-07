@@ -39,7 +39,7 @@ const formSchema = z.object({
   podcastEpisodeDescription: z.string().min(2).max(200),
 });
 
-const createEpisode = () => {
+const CreateEpisode = () => {
   const [isSubmitting, setIsSubmitting ] = useState(false);
 
   const recorderControls = useVoiceVisualizer();
@@ -182,4 +182,4 @@ const createEpisode = () => {
   );
 }
 
-export default createEpisode
+export default CreateEpisode

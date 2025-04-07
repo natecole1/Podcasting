@@ -70,7 +70,7 @@ const Library = () => {
 
     useEffect(() => {
       setFilteredPodcastLibrary(podcastLibrary.filter((podcast) => podcast.podcastName.toLowerCase().startsWith(value)))
-    },[value])
+    },[value, podcastLibrary])
    
   return (
     <div className="w-full">

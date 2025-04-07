@@ -105,7 +105,7 @@ const AudioPlayer = ({ audioUrl, handlePrevClick, handleNextClick }: AudioPlayer
          
        };
 
-    },[isPlaying, audioUrl])
+    },[isPlaying, audioUrl, startAnimation, updateProgress])
 
     const handlePlayPause = () => {
         dispatch(toggleIsPlaying());

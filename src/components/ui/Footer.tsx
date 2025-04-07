@@ -9,7 +9,7 @@ const Footer = () => {
   
   useEffect(() => {
     setCurrentYear(year);
-  }, [])
+  }, [year])
 
   return (
     <div className="bg-black-1 flex flex-col items-center justify-center w-full h-auto">
