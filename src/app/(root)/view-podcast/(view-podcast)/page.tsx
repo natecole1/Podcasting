@@ -39,7 +39,7 @@ const ViewPodcasts = () => {
                             >
                             <div className="relative group flex flex-col justify-center items-center ">
                               <Image
-                                src={podcast.imageUrl}
+                                src={podcast.imageUrl || ""}
                                 alt="podcast image"
                                 width={100}
                                 height={100}
