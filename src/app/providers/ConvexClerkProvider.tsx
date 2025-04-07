@@ -9,7 +9,7 @@ const convex = new ConvexReactClient("https://adorable-civet-122.convex.cloud");
 
 const ConvexClerkProvider = ({ children }: { children: ReactNode }) => (
   <ClerkProvider
-    publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY as string}
+    publishableKey={"pk_test_c2Vuc2libGUtYnVnLTkwLmNsZXJrLmFjY291bnRzLmRldiQ"}
     appearance={{
       layout: {
         socialButtonsVariant: "blockButton",
