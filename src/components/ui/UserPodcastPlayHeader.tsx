@@ -28,7 +28,7 @@ const UserPodcastPlayHeader = ({name, description, imageUrl, bgImage}: UserPodca
       <div className="flex flex-col justify-center items-center w-full h-full gap-8 bg-blackOverlay">
         <div>
           <Image
-            src={imageUrl}
+            src={imageUrl || ""}
             alt="podcast image"
             width={80}
             height={80}
