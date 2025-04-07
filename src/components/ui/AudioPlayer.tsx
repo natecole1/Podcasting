@@ -72,7 +72,7 @@ const AudioPlayer = ({ audioUrl, handlePrevClick, handleNextClick }: AudioPlayer
       
     }
         
-    },[audioPlayerRef, progressBarRef, dispatch, duration] )
+    },[audioPlayerRef, progressBarRef, dispatch, duration, isPlaying] )
 
     const startAnimation = useCallback(() => {
       if (audioPlayerRef.current && progressBarRef.current) {

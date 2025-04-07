@@ -12,7 +12,7 @@ const PodcastCardLg = ({
     <div className="cursor-pointer w-[150px] lg:w-[200px] h-[220px] lg:h-[300px] rounded-lg mt-5 bg-white-1">
       <div className="flex flex-col w-full gap-2 pb-2 ">
         <Image
-          src={imgURL}
+          src={imgURL|| "" }
           alt='podcast Image'
           width={100}
           height={100}
