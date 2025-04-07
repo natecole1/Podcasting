@@ -8,9 +8,10 @@ export default defineSchema({
     podcastDescription: v.string(),
     imageUrl: v.optional(v.string()),
     imageStorageId: v.optional(v.id("_storage")),
-    author: v.string(),
+    author: v.union(v.string(), v.null()),
     authorId: v.string(),
     authorImageUrl: v.string(),
+   
   })
     .searchIndex("search_author", { searchField: "author" })
     .searchIndex("search_title", { searchField: "podcastTitle" })
@@ -20,7 +21,7 @@ export default defineSchema({
     email: v.string(),
     imageUrl: v.string(),
     clerkId: v.string(),
-    name: v.string(),
+    name: v.union(v.string(), v.null())
   }),
 
   episodes: defineTable({
@@ -29,9 +30,10 @@ export default defineSchema({
     podcastEpisodeDescription: v.string(),
     audioUrl: v.string(),
     audioStorageId: v.optional(v.id("_storage")),
-    author: v.string(),
+    author: v.union(v.string(), v.null()),
     authorId: v.string(),
     authorImageUrl: v.string(),
+   
   })
     .searchIndex("search_author", { searchField: "author" })
     .searchIndex("search_podcast_title", { searchField: "podcastEpisodeTitle" })

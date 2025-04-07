@@ -78,7 +78,7 @@ const Library = () => {
         <div className="w-full mt-32 ">
           <div className="w-full bg-black-2 p-10 rounded-3xl flex flex-col items-center justify-center gap-4 lg:p-20">
             <h1 className="text-gold-1 text-xl xl:text-3xl">
-              You Have No Podcasts Saved Yet!
+              You have no podcasts saved yet!
             </h1>
           </div>
         </div>

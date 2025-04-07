@@ -14,10 +14,16 @@ import { cn } from "@/src/lib/utils";
 import { usePathname } from "next/navigation";
 import { useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
+import { useUser } from "@clerk/nextjs";
 
 const MobileMenu = () => {
+  const { user } = useUser();
   const pathname = usePathname();
+
   const podcast = useQuery(api.podcasts.getPodcasts);
+  const filteredPodcast = podcast?.filter(
+    (podcast) => podcast.authorId === user?.id
+  );
 
   return (
     <Sheet>
@@ -93,7 +99,7 @@ const MobileMenu = () => {
                   </Link>
                   <Link
                     href={
-                      podcast?.length !== 0
+                      filteredPodcast?.length !== 0
                         ? "create-podcast/create-episode"
                         : "/create-podcast"
                     }
@@ -110,7 +116,7 @@ const MobileMenu = () => {
                         width={24}
                         height={24}
                       />
-                      <p>{podcast?.length !== 0 ? "Create Episode" : "Create Podcast"}</p>
+                      <p>{filteredPodcast?.length !== 0 ? "Create Episode" : "Create Podcast"}</p>
                     </div>
                   </Link>
                   <Link

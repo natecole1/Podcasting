@@ -516,7 +516,7 @@ export type UserPodcastPlayEpisodesProps = {
         _creationTime: number;
         audioStorageId?: Id<"_storage"> | undefined;
         user: Id<"users">;
-        author: string;
+        author: string | null;
         authorId: string;
         authorImageUrl: string;
         podcastEpisodeTitle: string;
@@ -547,3 +547,31 @@ export type PodcastSearchResultType = {
     ];
   };
 };
+
+export type FilteredEpisodesType = {
+        _id: Id<"episodes">;
+        _creationTime: number;
+        audioStorageId?: Id<"_storage"> | undefined;
+        user: Id<"users">;
+        author: string | null;
+        authorId: string;
+        authorImageUrl: string;
+        podcastEpisodeTitle: string;
+        podcastEpisodeDescription: string;
+        audioUrl: string;
+      }[]
+
+
+export type FilteredPodcastType = {
+      _id: Id<"podcasts">;
+      _creationTime: number;
+      imageUrl?: string | undefined;
+      imageStorageId?: Id<"_storage"> | undefined;
+      user: Id<"users">;
+      podcastTitle: string;
+      podcastDescription: string;
+      author: string | null;
+      authorId: string;
+      authorImageUrl: string;
+    }[]
+      

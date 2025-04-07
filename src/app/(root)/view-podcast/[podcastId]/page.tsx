@@ -7,12 +7,26 @@ import UserPodcastPlayHeader from "@/src/components/ui/UserPodcastPlayHeader";
 import UserPodcastPlayEpisodes from "@/src/components/ui/UserPodcastPlayEpisode";
 import { useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
+import { useUser } from "@clerk/nextjs";
+import { FilteredPodcastType } from "@/src/types";
+
 
 
 const PodcastDetail = () => {
-  const params = useParams<{ podcastId: string }>();
-  const podcast = useQuery(api.podcasts.getPodcasts);
+  const { user } = useUser();
+  const podcast = useQuery(api.podcasts.getPodcasts) 
+
+  let filteredPodcast = podcast!.filter(
+    (podcast) => podcast.authorId === user?.id
+  );
+
   const episodes = useQuery(api.podcasts.getEpisodes);
+
+   const filteredEpisodes = episodes?.filter(
+     (episodes) => episodes.authorId === user?.id
+   );
+
+   console.log(filteredEpisodes)
 
   if(!podcast) {
     notFound();
@@ -22,15 +36,15 @@ const PodcastDetail = () => {
   return (
     <div>
       <UserPodcastPlayHeader
-        name={podcast[0].podcastTitle}
-        description={podcast[0].podcastDescription}
-        imageUrl={podcast[0].imageUrl}
+        name={filteredPodcast[0].podcastTitle} 
+        description={filteredPodcast[0].podcastDescription}
+        imageUrl={filteredPodcast[0].imageUrl}
         bgImage={"url(/assets/background_pattern4.png)"}
       />
       <UserPodcastPlayEpisodes
-        episodes={episodes} 
-        name={podcast[0].podcastTitle}
-        imageUrl={podcast[0].imageUrl}
+        episodes={filteredEpisodes} 
+        name={filteredPodcast[0].podcastTitle}
+        imageUrl={filteredPodcast[0].imageUrl}
       />
     </div>
   );

@@ -9,11 +9,16 @@ import React from "react";
 import PodcastLogo from "./PodcastLogo";
 import { useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
+import { useUser } from "@clerk/nextjs";
 
 const LeftSideBar = () => {
+  const { user } = useUser();
   const pathname = usePathname();
-  const podcast = useQuery(api.podcasts.getPodcasts);
 
+  const podcast = useQuery(api.podcasts.getPodcasts);
+  const filteredPodcast = podcast?.filter(
+    (podcast) => podcast.authorId === user?.id
+  );
 
   return (
     <section className="left_sidebar">
@@ -74,7 +79,7 @@ const LeftSideBar = () => {
           </Link>
           <Link
             href={
-              podcast?.length !== 0
+              filteredPodcast?.length !== 0
                 ? "create-podcast/create-episode"
                 : "/create-podcast"
             }
@@ -91,7 +96,7 @@ const LeftSideBar = () => {
                 width={24}
                 height={24}
               />
-              <p>{podcast?.length !== 0 ? "Create Episode" : "Create Podcast"}</p>
+              <p>{filteredPodcast?.length !== 0 ? "Create Episode" : "Create Podcast"}</p>
             </div>
           </Link>
           <Link

@@ -2,6 +2,7 @@
 import React from 'react';
 import { useQuery } from 'convex/react';
 import { api } from '@/convex/_generated/api';
+import { useUser } from '@clerk/nextjs';
 
 import Link from 'next/link';
 import Image from 'next/image';
@@ -10,15 +11,18 @@ import PlayIcon from '@/src/components/ui/PlayIcon';
 
 
 const ViewPodcasts = () => {
+    const { user } = useUser();
     const podcast = useQuery(api.podcasts.getPodcasts);
+
+    const filteredPodcast = podcast?.filter(podcast => podcast.authorId === user?.id);
 
   return (
     <div className='w-full'>
-        {podcast?.length === 0 ? (
+        {filteredPodcast?.length === 0 ? (
           <div className="w-full mt-32 ">
-          <div className="w-full bg-black-2 p-10 rounded-3xl flex flex-col items-center justify-center gap-4 lg:p-20">
+          <div className="w-full bg-black-2 p-10 rounded-xl flex flex-col items-center justify-center gap-4 lg:p-20">
             <h1 className="text-gold-1 text-xl xl:text-3xl">
-              You Haven't Created Podcast Yet!
+              You haven't created podcast yet!
             </h1>
           </div>
         </div>
@@ -26,7 +30,7 @@ const ViewPodcasts = () => {
           <div className='w-full gap-4'>
             <h1 className="font-bold text-gold-1 text-20">Listen to your Podcast</h1>
             <div className='text-white-1'>
-              {podcast?.map((podcast) => {
+              {filteredPodcast?.map((podcast) => {
                     return (
                       <div key={podcast._id} className="flex">
                         <div className="py-2 flex justify-center cursor-pointer">
