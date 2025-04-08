@@ -23,7 +23,7 @@ const BrowsePodcastGenres = () => {
           <Skeleton className="w-[90%] h-[200px] bg-black-1 rounded-2xl" />
         </div>
       ) : (
-        <div className="max-w-56 md:max-w-sm xl:max-w-lg overflow-hidden">
+       
           <Swiper
             effect={"coverflow"}
             grabCursor={true}
@@ -75,7 +75,7 @@ const BrowsePodcastGenres = () => {
                 })}
             </div>
           </Swiper>
-        </div>
+        
       )}
       <div className="w-full bg-white-2 h-[1px] opacity-10" />
       <div className="grid md:grid-cols-3">

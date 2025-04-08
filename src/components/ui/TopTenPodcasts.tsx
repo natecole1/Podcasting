@@ -28,7 +28,7 @@ const TopTenPodcasts = () => {
             <Skeleton className='w-[90%] h-[220px] bg-black-1 rounded-2xl'/>
           </div>
         ) : (
-          <div className="max-w-56 md:max-w-sm xl:max-w-lg overflow-hidden">
+          
             <Swiper
             effect={'coverflow'}
             grabCursor={true}
@@ -77,7 +77,7 @@ const TopTenPodcasts = () => {
                   }
                 </div>
             </Swiper>
-          </div>
+          
         )}
       </div>
     </div>  
