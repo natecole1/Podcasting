@@ -28,54 +28,56 @@ const TopTenPodcasts = () => {
             <Skeleton className='w-[90%] h-[220px] bg-black-1 rounded-2xl'/>
           </div>
         ) : (
-        <Swiper
-         effect={'coverflow'}
-         grabCursor={true}
-         centeredSlides={true}
-         loop={true}
-         slidesPerView={2}
-         breakpoints={{
-          480: {
-            slidesPerView:3
-          }
-         }}
-         height={200}
-         coverflowEffect={{
-          rotate: 0,
-          stretch: 0,
-          depth: 100,
-          modifier: 2.5,
-          slideShadows: false
-         }}
-         pagination={{ clickable: true}}
-         modules={[EffectCoverflow, Pagination]}
-         className='max-w-56 md:max-w-sm xl:max-w-lg overflow-hidden'
-        >
-          
-            <div className=' relative overflow-hidden'>
-              {
-                podcasts?.getMultiplePodcastSeries.map((podcast) => {
-                  return (
-                    <SwiperSlide key={podcast.uuid}>
-                      <Link
-                        href={`/home-dashboard/top-ten-podcasts/${podcast.uuid}`}
-                      >
-                        <div className="relative group flex flex-col justify-center items-center ">
-                          <PodcastCard
-                            description={podcast.description}
-                            title={podcast.name}
-                            imgURL={podcast.imageUrl}
-                            podcastId={podcast.uuid}
-                          />
-                         <PlayIcon />
-                        </div>
-                      </Link>
-                    </SwiperSlide>
-                  );
-                })
+          <div className="max-w-56 md:max-w-sm xl:max-w-lg overflow-hidden">
+            <Swiper
+            effect={'coverflow'}
+            grabCursor={true}
+            centeredSlides={true}
+            loop={true}
+            slidesPerView={2}
+            breakpoints={{
+              480: {
+                slidesPerView:3
               }
-            </div>
-        </Swiper>
+            }}
+            height={200}
+            coverflowEffect={{
+              rotate: 0,
+              stretch: 0,
+              depth: 100,
+              modifier: 2.5,
+              slideShadows: false
+            }}
+            pagination={{ clickable: true}}
+            modules={[EffectCoverflow, Pagination]}
+            className='max-w-56 md:max-w-sm xl:max-w-lg overflow-hidden'
+            >
+              
+                <div className=' relative overflow-hidden'>
+                  {
+                    podcasts?.getMultiplePodcastSeries.map((podcast) => {
+                      return (
+                        <SwiperSlide key={podcast.uuid}>
+                          <Link
+                            href={`/home-dashboard/top-ten-podcasts/${podcast.uuid}`}
+                          >
+                            <div className="relative group flex flex-col justify-center items-center ">
+                              <PodcastCard
+                                description={podcast.description}
+                                title={podcast.name}
+                                imgURL={podcast.imageUrl}
+                                podcastId={podcast.uuid}
+                              />
+                            <PlayIcon />
+                            </div>
+                          </Link>
+                        </SwiperSlide>
+                      );
+                    })
+                  }
+                </div>
+            </Swiper>
+          </div>
         )}
       </div>
     </div>  

@@ -23,57 +23,65 @@ const BrowsePodcastGenres = () => {
           <Skeleton className="w-[90%] h-[200px] bg-black-1 rounded-2xl" />
         </div>
       ) : (
-        <Swiper
-          effect={"coverflow"}
-          grabCursor={true}
-          centeredSlides={true}
-          loop={true}
-          slidesPerView={2}
-          height={200}
-          breakpoints={{
-            480: {
-              slidesPerView: 3,
-            },
-          }}
-          coverflowEffect={{
-            rotate: 0,
-            stretch: 0,
-            depth: 100,
-            modifier: 2.5,
-            slideShadows: false,
-          }}
-          pagination={{ clickable: true }}
-          modules={[EffectCoverflow, Pagination]}
-          className="max-w-56 md:max-w-sm xl:max-w-lg overflow-hidden"
-        >
-          <div className=" relative overflow-hidden">
-            {podcasts?.getTopChartsByGenres.podcastSeries
-              .slice(0, 9)
-              .map((podcast) => {
-                return (
-                  <SwiperSlide key={podcast.uuid}>
-                    <Link
-                      href={`/browse/browse-podcast/${genre}/${podcast.uuid}`}
-                    >
-                      <div className="relative group flex flex-col justify-center items-center ">
-                        <PodcastCard
-                          description={podcast.description}
-                          title={podcast.name}
-                          imgURL={podcast.imageUrl === null ? '/assets/No-Image-Placeholder.png' : podcast.imageUrl}
-                          podcastId={podcast.uuid}
-                        />
-                        <PlayIcon />
-                      </div>
-                    </Link>
-                  </SwiperSlide>
-                );
-              })}
-          </div>
-        </Swiper>
+        <div className="max-w-56 md:max-w-sm xl:max-w-lg overflow-hidden">
+          <Swiper
+            effect={"coverflow"}
+            grabCursor={true}
+            centeredSlides={true}
+            loop={true}
+            slidesPerView={2}
+            height={100}
+            breakpoints={{
+              480: {
+                slidesPerView: 3,
+              },
+            }}
+            coverflowEffect={{
+              rotate: 0,
+              stretch: 0,
+              depth: 100,
+              modifier: 2.5,
+              slideShadows: false,
+            }}
+            pagination={{ clickable: true }}
+            modules={[EffectCoverflow, Pagination]}
+            className="max-w-56 md:max-w-sm xl:max-w-lg overflow-hidden"
+          >
+            <div className=" relative overflow-hidden">
+              {podcasts?.getTopChartsByGenres.podcastSeries
+                .slice(0, 9)
+                .map((podcast) => {
+                  return (
+                    <SwiperSlide key={podcast.uuid}>
+                      <Link
+                        href={`/browse/browse-podcast/${genre}/${podcast.uuid}`}
+                      >
+                        <div className="relative group flex flex-col justify-center items-center ">
+                          <PodcastCard
+                            description={podcast.description}
+                            title={podcast.name}
+                            imgURL={
+                              podcast.imageUrl === null
+                                ? "/assets/No-Image-Placeholder.png"
+                                : podcast.imageUrl
+                            }
+                            podcastId={podcast.uuid}
+                          />
+                          <PlayIcon />
+                        </div>
+                      </Link>
+                    </SwiperSlide>
+                  );
+                })}
+            </div>
+          </Swiper>
+        </div>
       )}
       <div className="w-full bg-white-2 h-[1px] opacity-10" />
-      <div className='grid md:grid-cols-3'>
-        {podcasts?.getTopChartsByGenres.podcastSeries.slice(10).map((podcast) => {
+      <div className="grid md:grid-cols-3">
+        {podcasts?.getTopChartsByGenres.podcastSeries
+          .slice(10)
+          .map((podcast) => {
             return (
               <Link
                 key={podcast.uuid}
@@ -94,7 +102,7 @@ const BrowsePodcastGenres = () => {
                 </div>
               </Link>
             );
-        })}
+          })}
       </div>
     </div>
   );
