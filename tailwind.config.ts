@@ -93,6 +93,9 @@ const config = {
     },
   },
   plugins: [require("tailwindcss-animate")],
+  safelist: [
+    'max-w-56', 'md:max-w-sm', 'xl:max-w-lg', 'overflow-hidden'
+  ]
 } satisfies Config;
 
 export default config;
