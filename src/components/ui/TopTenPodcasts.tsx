@@ -39,6 +39,7 @@ const TopTenPodcasts = () => {
             slidesPerView:3
           }
          }}
+         height={200}
          coverflowEffect={{
           rotate: 0,
           stretch: 0,
