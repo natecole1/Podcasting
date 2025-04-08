@@ -29,6 +29,7 @@ const BrowsePodcastGenres = () => {
           centeredSlides={true}
           loop={true}
           slidesPerView={2}
+          height={200}
           breakpoints={{
             480: {
               slidesPerView: 3,
