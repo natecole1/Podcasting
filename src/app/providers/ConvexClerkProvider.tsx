@@ -5,11 +5,13 @@ import { ConvexProviderWithClerk } from "convex/react-clerk";
 import { ConvexReactClient } from "convex/react";
 import { ReactNode } from "react";
 
-const convex = new ConvexReactClient("https://adorable-civet-122.convex.cloud");
+const convex = new ConvexReactClient(process.env.NEXT_PUBLIC_CONVEX_URL as string);
+
+
 
 const ConvexClerkProvider = ({ children }: { children: ReactNode }) => (
   <ClerkProvider
-    publishableKey={"pk_test_c2Vuc2libGUtYnVnLTkwLmNsZXJrLmFjY291bnRzLmRldiQ"}
+     publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY as string}
     appearance={{
       layout: {
         socialButtonsVariant: "blockButton",
@@ -25,7 +27,10 @@ const ConvexClerkProvider = ({ children }: { children: ReactNode }) => (
     }}
     afterSignOutUrl="/sign-in"
   >
-    <ConvexProviderWithClerk client={convex} useAuth={useAuth}>
+    <ConvexProviderWithClerk
+      client={convex}
+      useAuth={useAuth}
+     >
       {children}
     </ConvexProviderWithClerk>
   </ClerkProvider>
