@@ -50,7 +50,7 @@ const TopTenPodcasts = () => {
             }}
             pagination={{ clickable: true}}
             modules={[EffectCoverflow, Pagination]}
-            className='max-w-56 md:max-w-sm xl:max-w-lg overflow-hidden'
+            className='max-w-56 max-h-50 md:max-w-sm md:max-h-56 xl:max-w-lg xl:max-h-64 overflow-hidden'
             >
               
                 <div className=' relative overflow-hidden'>

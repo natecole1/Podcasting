@@ -22,7 +22,7 @@ const ViewPodcasts = () => {
           <div className="w-full mt-5">
           <div className="w-full bg-black-2 p-10 border-[1px] border-gold-1 rounded-xl flex flex-col text-center items-center justify-center gap-4 lg:p-20">
             <h1 className="text-gold-1 text-xl xl:text-3xl">
-              You have not created podcast yet!
+              You have not created a podcast yet!
             </h1>
           </div>
         </div>
