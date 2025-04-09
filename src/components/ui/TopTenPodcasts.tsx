@@ -35,12 +35,13 @@ const TopTenPodcasts = () => {
             centeredSlides={true}
             loop={true}
             slidesPerView={2}
+            autoHeight={true}
             breakpoints={{
               480: {
                 slidesPerView:3
               }
             }}
-            height={200}
+
             coverflowEffect={{
               rotate: 0,
               stretch: 0,
