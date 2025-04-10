@@ -74,7 +74,7 @@ const UserPodcastPlayEpisodes = ({episodes, name, imageUrl}: UserPodcastPlayEpis
     } ));
     toast({
       variant: "success",
-      description: "You've add the podcast to your library!",
+      description: "You've added the podcast to your library!",
     });
   }
 
