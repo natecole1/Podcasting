@@ -20,11 +20,13 @@ const Root = ({ children }: Readonly<{ children: React.ReactNode }>) => {
     <ConvexClerkProvider>
       <StoreProvider>
         <PersistGate loading={null} persistor={persistor}>
-          <html lang="en">
-            <body className={`${mulish.variable}`}>
-              <StyledComponentRegistry>{children}</StyledComponentRegistry>
-            </body>
-          </html>
+          <StyledComponentRegistry>
+            <html lang="en">
+              <body className={`${mulish.variable}`}>
+                  {children}
+              </body>
+            </html>
+          </StyledComponentRegistry>
         </PersistGate>
       </StoreProvider>
     </ConvexClerkProvider>
