@@ -25,7 +25,7 @@ const Home = () => {
       setTimeout(() => {
         setIsLoading(false);
         window.scrollTo(0,0);
-      }, 3000)
+      }, 1000)
     }
 
     loadPage();
@@ -34,10 +34,10 @@ const Home = () => {
   return (
     <>
       <SmoothScroll>
-        <AnimatePresence mode='wait'>
-          {isLoading && <SplashScreen />}
-        </AnimatePresence>
         <div className="relative">
+          <AnimatePresence mode='wait'>
+            {isLoading && <SplashScreen />}
+          </AnimatePresence>
           <VideoBackground />
           <Navbar />
           <Hero />

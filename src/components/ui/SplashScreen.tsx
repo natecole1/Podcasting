@@ -44,7 +44,7 @@ const SplashScreen = () => {
             className="text-gold-1 text-3xl font-bold xl:text-5xl z-10"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 3, ease: "easeInOut" }}
+            transition={{ duration: 2, ease: "easeInOut" }}
           >
             PODCASTING
           </motion.h1>
@@ -58,7 +58,7 @@ const SplashScreen = () => {
               }}
               exit={{
                 d: targetPath,
-                transition: {  duration: 1, ease: [0.76, 0, 0.24, 1], delay: 0.3 }
+                transition: {  duration: 0.5, ease: [0.76, 0, 0.24, 1], delay: 0.3 }
               }}
               className="fill-black-7"
             ></motion.path>

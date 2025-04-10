@@ -1,67 +1,93 @@
 'use client'
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import { Button } from "./button";
 import Link from "next/link";
-import { motion, useInView } from "motion/react";
-import { slideUp, opacity } from "@/src/app/animations/animations";
+import { motion } from "motion/react";
+
 
 const Hero = () => {
   const [ isLoading, setIsLoading ] = useState(false);
+
   const firstHeroPhrase = "Create Captivating Podcasts with AI";
+  const firstHeroPhraseTextSplit = firstHeroPhrase.split("");
+  
   const secondHeroPhrase = "Listen to Great Content";
+  const secondHeroPhraseTextSplit = secondHeroPhrase.split("");
 
-  const description = useRef(null);
-  const isInView = useInView(description);
+  const thirdHeroPhrase =
+    " PODCASTING is a podcast creation and streaming platform.";
+  const thirdHeroPhraseTextSplit = thirdHeroPhrase.split("");
 
+
+  const variants = {
+    hidden: {opacity: 0},
+    visible: {
+      opacity: 1,
+     
+    }
+  }
 
   return (
     <div
       className="flex flex-col items-center justify-center w-full h-screen text-center"
-      ref={description}
     >
-      <h1 className="font-bold text-xl md:text-4xl text-white-1">
-        <motion.span
-          variants={opacity}
-          initial="initial"
-          animate={isInView ? "open" : "closed"}
-          transition={{ staggerChildren: 3}}
-
+      <motion.h1 
+        initial="hidden"
+        whileInView="visible"
+        className="font-bold text-xl md:text-4xl text-white-1"
+        transition={{
+          staggerChildren: 0.02
+        }}
         >
-          {firstHeroPhrase.split(" ").map((word, index) => {
+          {firstHeroPhraseTextSplit.map((char, index) => {
             return (
               <motion.span
-                variants={opacity}
+                variants={variants}
                 key={index}
-                className="mr-2 inline-block"
+                transition={{duration: 0.5 }}
               >
-                {word}
+                {char}
               </motion.span>
             );
           })}
-        </motion.span>
-      </h1>
-      <h1 className="font-bold text-xl md:text-4xl text-white-1 my-2">
-        {secondHeroPhrase.split(" ").map((word, index) => {
+      </motion.h1>
+      <motion.h1 
+         className="font-bold text-xl md:text-4xl text-white-1 my-2"
+         initial="hidden" 
+         whileInView="visible"
+         transition={{staggerChildren: 0.035}}
+       >
+        {secondHeroPhraseTextSplit.map((char, index) => {
           return (
             <motion.span
-              variants={opacity}
+              variants={variants}
               key={index}
-              custom={index}
-              animate={isInView ? "open" : "closed"}
-              className="mr-2 inline-block"
+              transition={{ duration: 0.35}}
             >
-              {word}
+              {char}
             </motion.span>
           );
         })}
-      </h1>
+      </motion.h1>
 
       <motion.p
-        variants={opacity}
+        initial="hidden"
+        whileInView="visible"
+        transition={{staggerChildren: 0.04}}
         className="text-white-2  lg:text-2xl px-8"
-        animate={isInView ? "open" : "closed"}
+        
       >
-        PODCASTING is a podcast creation and streaming platform.
+       {thirdHeroPhraseTextSplit.map((char, index) => {
+        return(
+          <motion.span
+            variants={variants}
+            key={index}
+            transition={{ duration: 0.35}}
+          >
+            {char}
+          </motion.span>
+        )
+       })}
       </motion.p>
         <Button
           className="bg-gold-1 w-44 rounded-3xl mt-5 duration-300 active:scale-90"
