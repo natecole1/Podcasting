@@ -22,7 +22,7 @@ const ListenToPodcastSection = () => {
         <p className="text-white-1 text-xs md:text-lg xl:text-2xl mb-10">
           On PODCASTING, enjoy wide-ranging discussions on many topics.
         </p>
-        <p className="hidden sm:flex text-white-1 md:text-lg xl:text-2xl overflow-hidden mb-10 2xl:mb-48">
+        <p className="hidden md:flex text-white-1 md:text-lg xl:text-2xl overflow-hidden mb-10 2xl:mb-48">
           Topics as varied as sports, crime thrillers, documentaries and many
           more, are waiting for you to discover.
         </p>
