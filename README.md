@@ -38,5 +38,5 @@ If users are so inspired, they can create their own podcast. With generative AI 
 
 ## License
 
-This product is provided under the [MIT License](docs/LICENSE.md)
+This product is provided under the [MIT License](Podcasting/LICENSE.md)
 
