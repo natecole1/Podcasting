@@ -34,13 +34,13 @@ const CreateSection = () => {
         </div>
       </div>
       <div className="w-[50%] hidden sm:flex relative rounded-xl overflow-hidden">
-        <div className="w-full h-full">
+        <div className="w-full h-full flex-center my-5">
           <Image
             src="/assets/podcastPicTwo.svg"
             alt="man podcasting"
             width={100}
             height={100}
-            className="object-cover w-full h-full rounded-xl"
+            className="object-cover w-[80%] h-[80%] rounded-xl"
           />
         </div>
       </div>

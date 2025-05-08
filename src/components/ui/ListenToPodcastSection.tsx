@@ -7,7 +7,7 @@ const ListenToPodcastSection = () => {
   return (
     <div className="w-full h-full bg-listen_bg_image bg-no-repeat bg-cover flex items-center justify-center">
       <motion.div
-        className="bg-gold-1/[.4] w-1/3 h-3/5 m-20 flex flex-col items-center p-4 rounded-2xl"
+        className="bg-gold-1/[.4] w-[60%] h-[50%] m-20 flex flex-col items-center p-8 rounded-2xl"
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{
@@ -16,22 +16,22 @@ const ListenToPodcastSection = () => {
           ease: easeIn,
         }}
       >
-        <div className="h-auto w-[80%] bg-blue-700 text-white-1 text-xs sm:text-lg p-3 sm:p-6 flex items-center justify-center mb-5 lg:mb-10 xl:mb-20 rounded-2xl">
-          Stream Podcasts
-        </div>
-        <p className="text-white-1 text-xs md:text-lg xl:text-2xl mb-10">
+       
+        <p className=" text-md md:text-xl xl:text-2xl 2xl:text-4xl mb-10">
           On PODCASTING, enjoy wide-ranging discussions on many topics.
         </p>
-        <p className="hidden lg:flex text-white-1 md:text-lg xl:text-2xl overflow-hidden mb-10 2xl:mb-48">
+        <p className="flex  md:text-xl xl:text-2xl 2xl:text-4xl 2xl:mb-48">
           Topics as varied as sports, crime thrillers, documentaries and many
           more, are waiting for you to discover.
         </p>
-        <Link
-          href="/sign-up"
-          className="hidden xl:flex text-blue-700 text-4xl font-extrabold "
-        >
-          SIGN UP TODAY
-        </Link>
+        <div className="w-full h-full flex justify-center items-end">
+          <Link
+            href="/sign-up"
+            className=" text-blue-700 hover:text-white-2 text-xl lg:text-4xl font-bold  "
+          >
+            SIGN UP TODAY
+          </Link>
+        </div>
       </motion.div>
     </div>
   );

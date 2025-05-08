@@ -1,7 +1,7 @@
 'use client'
 import Link from "next/link";
 import { Button } from "./button";
-import { motion } from "motion/react";
+
 import Image from "next/image";
 import { useRef, useState } from "react";
 
@@ -10,31 +10,23 @@ import { useScroll, useTransform } from 'motion/react';
 const DiscoverSection = () => {
   const [isLoading, setIsLoading ] = useState(false);
   
-   const containerRef = useRef(null);
-   const { scrollYProgress } = useScroll({
-     target: containerRef,
-     offset: ["start end", "start start"],
-   });
-   const imageScale = useTransform(scrollYProgress, [0, 1], [2, 1]);
-
-
+ 
   return (
     <div
-      ref={containerRef}
-      className="flex flex-col sm:flex-row w-full bg-black-1 p-6"
+      className="flex flex-col sm:flex-row w-full bg-black-1 py-6 "
     >
-      <div className="w-full sm:w-[50%] sm:flex relative rounded-xl overflow-hidden">
-        <motion.div style={{ scale: imageScale }} className="w-full h-full">
+      <div className="w-full sm:w-[50%] sm:flex overflow-hidden my-5">
+        <div className="w-full h-full flex-center my-10">
           <Image
             src="/assets/podcastPicFour.svg"
             alt="man podcasting"
             width={100}
             height={100}
-            className="w-full h-full object-cover rounded-xl"
+            className="w-[80%] h-[80%] object-cover rounded-xl"
           />
-        </motion.div>
+        </div>
       </div>
-      <div className="flex flex-col justify-start w-full sm:w-[50%] pt-2 sm:p-4">
+      <div className="flex flex-col justify-start w-full sm:w-[50%] p-6">
         <p className="text-white-4">DELVE INTO NEW IDEAS</p>
         <div className="w-[186px] h-2 mt-2 bg-gold-1" />
         <h1 className="text-white-1 text-3xl mt-8">

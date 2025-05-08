@@ -34,13 +34,13 @@ const BrowseSection = () => {
         </div>
       </div>
       <div className="w-[50%] hidden sm:flex relative rounded-xl overflow-hidden">
-        <div className="w-full h-full">
+        <div className="w-full h-full flex-center my-5">
           <Image
             src="/assets/podcastPicFive.svg"
             alt="man podcasting"
             width={100}
             height={100}
-            className="rounded-xl w-full h-full object-cover"
+            className="rounded-xl w-[80%] h-[80%] object-cover"
           />
         </div>
       </div>
