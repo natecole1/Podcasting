@@ -10,7 +10,7 @@ const BrowseSection = () => {
 
   return (
     <div className="flex bg-black-1 p-6">
-      <div className="flex flex-col justify-start w-full sm:w-[50%]">
+      <div className="flex flex-col justify-start w-full sm:w-[50%] my-10">
         <p className="text-white-4">GROW YOUR BRAND</p>
         <div className="w-40 h-2 mt-2 bg-gold-1" />
         <h1 className="text-gold-1 text-3xl mt-8">
