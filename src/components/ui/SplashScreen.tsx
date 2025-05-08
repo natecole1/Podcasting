@@ -13,9 +13,9 @@ const SplashScreen = () => {
     setDimension({ width: window.innerWidth, height: window.innerHeight });
   }, []);
 
-  const initialPath = `M0 0 L${dimension.width} 0 L${dimension.width} ${dimension.height} Q${dimension.width/2} ${dimension.height + 300} 0 ${dimension.height}  L0 0`
-  const targetPath = `M0 0 L${dimension.width} 0 L${dimension.width} ${dimension.height} Q${dimension.width/2} ${dimension.height} 0 ${dimension.height}  L0 0`
+      const initialPath = `M0 0 L${dimension.width} 0 L${dimension.width} ${dimension.height} Q${dimension.width / 2} ${dimension.height + 300} 0 ${dimension.height}  L0 0`;
 
+      const targetPath = `M0 0 L${dimension.width} 0 L${dimension.width} ${dimension.height} Q${dimension.width / 2} ${dimension.height} 0 ${dimension.height}  L0 0`;
     const curve = {
       initial: {
         d: initialPath,
@@ -34,7 +34,7 @@ const SplashScreen = () => {
       animate="initial"
       exit={{
         top: -1000,
-        transition: { duration: 1, ease: "easeOut", delay: 0.5 },
+        transition: { duration: 1.5, ease: "easeOut", delay: 0.5 },
       }}
       className="w-full h-screen fixed flex items-center justify-center z-50 bg-black-7"
     >
@@ -54,7 +54,6 @@ const SplashScreen = () => {
               variants={curve}
               initial={{
                 d: initialPath,
-                // transition: { duration: 1, ease: [0.76, 0, 0.24, 1] },
               }}
               exit={{
                 d: targetPath,
