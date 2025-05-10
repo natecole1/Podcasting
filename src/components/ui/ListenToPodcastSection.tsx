@@ -17,7 +17,7 @@ const ListenToPodcastSection = () => {
         }}
       >
        
-        <p className=" text-md md:text-xl xl:text-2xl 2xl:text-4xl mb-10">
+        <p className=" text-md md:text-xl xl:text-2xl 2xl:text-4xl mb-5">
           On PODCASTING, enjoy wide-ranging discussions on many topics.
         </p>
         <p className="flex  md:text-xl xl:text-2xl 2xl:text-4xl 2xl:mb-48">
@@ -27,7 +27,7 @@ const ListenToPodcastSection = () => {
         <div className="w-full h-full flex justify-center items-end">
           <Link
             href="/sign-up"
-            className=" text-blue-700 hover:text-white-2 text-xl lg:text-4xl font-bold  "
+            className=" text-blue-700 hover:text-white-2 text-md md:text-xl lg:text-4xl font-bold  "
           >
             SIGN UP TODAY
           </Link>
