@@ -1,5 +1,6 @@
 import React from "react";
 import { Toaster } from '@/components/ui/toaster';
+import { Analytics } from '@vercel/analytics/react';
 
 const Rootlayout = ({
   children,
@@ -10,6 +11,7 @@ const Rootlayout = ({
     <div>
       {children}
       <Toaster />
+      <Analytics />
     </div>
   );
 };
