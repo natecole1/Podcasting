@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Button } from "./button";
 import Image from "next/image";
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 
 const BrowseSection = () => {
@@ -11,15 +12,39 @@ const BrowseSection = () => {
   return (
     <div className="flex bg-black-1 p-6">
       <div className="flex flex-col justify-start w-full sm:w-[50%] my-10">
-        <p className="text-white-4">GROW YOUR BRAND</p>
-        <div className="w-40 h-2 mt-2 bg-gold-1" />
-        <h1 className="text-gold-1 text-3xl mt-8">
+        <motion.p 
+         className="text-white-4"
+         initial={{ opacity: 0, y: 25 }}
+         whileInView={{ opacity: 1, y: 0 }}
+         transition={{ duration: 0.5, delay: 0.4 }}
+         viewport={{ once: true }}
+         >
+          GROW YOUR BRAND</motion.p>
+        <motion.div 
+          className="w-40 h-2 mt-2 bg-gold-1" 
+          initial={{ width: 0, y: 25 }}
+          whileInView={{ width: "45%", y: 0 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+          viewport={{ once: true }}  
+        />
+        <motion.h1 
+          className="text-gold-1 text-3xl mt-8"
+          initial={{ opacity: 0, y: 25 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+          viewport={{ once: true }}>
           Reach a Broader Range of Listeners and Increase Your Audience
-        </h1>
-        <div className="flex flex-col h-full place-content-between">
+        </motion.h1>
+        <motion.div 
+          className="flex flex-col h-full place-content-between"
+          initial={{ opacity: 0, y: 25 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.6, staggerChildren: 0.2 }}
+          viewport={{ once: true }}
+        >
           <p className="text-white-4 text-sm xl:text-lg my-5">
             Podcasting is a new platform designed to help you take advantage of
-            a great new space to engage with your listeners. Create interesting
+            a great space to engage with your listeners. Create interesting
             content and allow listeners to find you.
           </p>
           <Button
@@ -31,10 +56,15 @@ const BrowseSection = () => {
           >
             <Link href="/sign-up">Create</Link>
           </Button>
-        </div>
+        </motion.div>
       </div>
       <div className="w-[50%] hidden sm:flex relative rounded-xl overflow-hidden">
-        <div className="w-full h-full flex-center my-5">
+        <motion.div 
+          className="w-full h-full flex-center my-5"
+          initial={{ opacity: 0, y: 25 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.6 }}
+          viewport={{ once: true }}>
           <Image
             src="/assets/podcastPicFive.svg"
             alt="man podcasting"
@@ -42,7 +72,7 @@ const BrowseSection = () => {
             height={100}
             className="rounded-xl w-[80%] h-[80%] object-cover"
           />
-        </div>
+        </motion.div>
       </div>
     </div>
   );

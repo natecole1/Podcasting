@@ -1,14 +1,17 @@
 
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import Root from "../components/ui/Root";
+import { Mulish } from "next/font/google";
 
 import { WebVitals } from "../components/ui/WebVitals";
 
 import "./globals.css";
 
 
-const inter = Inter({ subsets: ["latin"] });
+const mulish = Mulish({ 
+  subsets: ["latin"],
+  variable: '--font-mulish' 
+});
 
 export const metadata: Metadata = {
   title: "Podcasting",
@@ -21,9 +24,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <>
-      <WebVitals />
-      <Root>{children}</Root>
-    </>
+      <html lang="en">
+        <body className={`${mulish.variable}`}>
+          <div>
+            <WebVitals />
+            <Root>{children}</Root>
+          </div>
+        </body>
+      </html> 
   );
 }

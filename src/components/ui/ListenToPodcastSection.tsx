@@ -8,13 +8,9 @@ const ListenToPodcastSection = () => {
     <div className="w-full h-full bg-listen_bg_image bg-no-repeat bg-cover flex items-center justify-center">
       <motion.div
         className="bg-gold-1/[.4] w-[60%] h-[50%] m-20 flex flex-col items-center p-8 rounded-2xl"
-        initial={{ opacity: 0, y: 50 }}
+        initial={{ opacity: 0, y: 25 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{
-          duration: 1,
-          delay: 0.5,
-          ease: easeIn,
-        }}
+        transition={{ duration: 0.5, delay: 0.4 }}
       >
        
         <p className=" text-md md:text-xl xl:text-2xl 2xl:text-4xl mb-5">
