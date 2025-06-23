@@ -11,6 +11,7 @@ const ListenToPodcastSection = () => {
         initial={{ opacity: 0, y: 25 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.4 }}
+        viewport={{ once: true }}
       >
        
         <p className=" text-md md:text-xl xl:text-2xl 2xl:text-4xl mb-5">
