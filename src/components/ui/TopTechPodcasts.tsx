@@ -8,6 +8,8 @@ import PodcastCardLg from './PodcastCardLg';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
+
+import { EffectCoverflow } from 'swiper/modules';
 import PlayIcon from './PlayIcon';
 import Link from 'next/link';
 
@@ -24,44 +26,48 @@ const TopTechPodcasts = () => {
           <Skeleton className="w-[90%] h-[200px] bg-black-1 rounded-2xl" />
         </div>
       ) : (
-        <div className="w-full m-auto">
+        <div className='my-10'>
           <Swiper
+            effect={"coverflow"}
+            grabCursor={true}
             loop={true}
             centeredSlides={true}
+            slidesPerView={2}
+            autoHeight={true}
             breakpoints={{
-              0: {
-                // For all devices
-                slidesPerView: 1.5,
-                
-              },
-              640: {
+              480: {
                 slidesPerView: 3,
               },
-              1100: {
-                slidesPerView: 4,
-              },
+            }}
+            coverflowEffect={{
+              rotate: 0,
+              stretch: 0,
+              depth: 100,
+              modifier: 2.5,
+              slideShadows: false,
             }}
             navigation
             pagination={{ clickable: true }}
-            modules={[Navigation]}
-            className="w-full max-w-[250px] sm:max-w-[470px] lg:max-w-2xl xl:max-w-6xl"
-            observeParents={true}
+            modules={[EffectCoverflow, Navigation]}
+            className="max-w-[300px]  md:max-w-lg xl:max-w-xl overflow-hidden"
+
           >
-            <div>
+            <div className="relative">
               {techPodcasts?.getMultiplePodcastSeries.map((podcast) => {
                 return (
                   <SwiperSlide key={podcast.uuid}>
-                   <Link  href={`/home-dashboard/top-tech-podcasts/${podcast.uuid}`}
-                      >
-                    <div className="relative group flex flex-col justify-center items-center ">
-                      <PodcastCardLg
-                        host={podcast.itunesInfo.publisherName}
-                        title={podcast.name}
-                        imgURL={podcast.imageUrl}
-                        podcastId={podcast.uuid}
-                      />
-                      <PlayIcon />
-                    </div>
+                    <Link
+                      href={`/home-dashboard/top-tech-podcasts/${podcast.uuid}`}
+                    >
+                      <div className="relative group flex flex-col justify-center items-center ">
+                        <PodcastCardLg
+                          host={podcast.itunesInfo.publisherName}
+                          title={podcast.name}
+                          imgURL={podcast.imageUrl}
+                          podcastId={podcast.uuid}
+                        />
+                        <PlayIcon />
+                      </div>
                     </Link>
                   </SwiperSlide>
                 );

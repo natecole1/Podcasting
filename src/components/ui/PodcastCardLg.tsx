@@ -9,7 +9,7 @@ const PodcastCardLg = ({
   podcastId,
 }: PodcastType) => {
   return (
-    <div className="cursor-pointer w-[150px] lg:w-[200px] h-[220px] lg:h-[300px] rounded-lg mt-5 bg-white-1">
+    <div className="cursor-pointer w-[150px] lg:w-[200px] h-[220px] lg:h-[300px] rounded-lg mt-5 bg-black-1">
       <div className="flex flex-col w-full gap-2 pb-2 ">
         <Image
           src={imgURL|| "" }
@@ -20,8 +20,8 @@ const PodcastCardLg = ({
         />
       </div>
       <div className="flex flex-col justify-center text-center">
-        <h1 className="font-bold text-14 md:text-16 mt-1 truncate">{title}</h1>
-        <p className="text-blue-700 truncate">{host}</p>
+        <h1 className="font-bold text-14 md:text-16 mt-1 truncate text-white-2">{title}</h1>
+        <p className="text-gold-1 truncate">{host}</p>
       </div>
       
     </div>
