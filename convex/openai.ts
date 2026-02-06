@@ -18,6 +18,10 @@ export const generateThumbnailAction = action({
         n: 1,
     })
 
+    if (!response.data || !response.data[0]?.url) {
+      throw new Error('Error generating thumbnail')
+    }
+
     const url = response.data[0].url;
 
     if (!url) {
